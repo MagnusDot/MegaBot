@@ -16,4 +16,5 @@ and then create a file at the root named config.js:
 
 then : 
 
+```npm run build-ts```
 ```npm run start```
