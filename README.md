@@ -2,7 +2,7 @@
 
 MegaBot was created to bring together all the possible features of bots existing on discord. We are fed up with hundreds of bots that look alike and populate the same discord server! So we want to create a unique discord bot that brings everything together in security and simplicity!
 
-
+Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&permissions=8&scope=bot
 
 
 # New Features! V0.1
@@ -19,8 +19,6 @@ MegaBot was created to bring together all the possible features of bots existing
 
 Want to contribute? Great! 
 You can open some Issue and explain what do you need in the future ! 
-
-You can install it on you're server here : 
 
 #### installation for developper
 
