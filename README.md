@@ -24,13 +24,13 @@ You can install it on you're server here :
 
 #### installation for developper
 
-To install our bot, just run : 
-`npm i`
-and then create a file at the root named config.js:
+Create a file at the root named config.js:
 
 `module.exports = { token : "you're discord token"
 }`
 then : 
 
-```npm run build-ts```
-```npm run start```
+```
+$ npm i
+$ npm run build-ts
+$ npm run start```
