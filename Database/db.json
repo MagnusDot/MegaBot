@@ -1,0 +1,23 @@
+{
+  "user": [
+    {
+      "id": "455529558352068619_187598665743859712",
+      "server": 455529558352068600,
+      "title": "Magnus",
+      "warn": 0,
+      "muted": {}
+    },
+    {
+      "id": "magnustest",
+      "server": 455529558352068600,
+      "title": "Magnus",
+      "warn": 0,
+      "muted": {
+        "until": 1598188384829,
+        "reason": "To loud",
+        "administrator": "Magnus",
+        "explained": 0
+      }
+    }
+  ]
+}
