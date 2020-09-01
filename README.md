@@ -22,7 +22,7 @@ You can open some Issue and explain what do you need in the future !
 
 You can install it on you're server here : 
 
-###~# installation for developper
+#### installation for developper
 
 To install our bot, just run : 
 `npm i`
