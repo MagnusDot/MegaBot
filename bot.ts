@@ -22,7 +22,7 @@ import {Mute} from "./Commands/Mute";
 import {Help} from "./Commands/Help";
 import {Reaction} from "./Commands/Reaction";
 import {AddRole} from "./Commands/AddRole";
-import {React} from "./Commands/React";
+import {React} from "./Commands/React/React";
 import {Poll} from "./Commands/Poll";
 
 
@@ -51,7 +51,7 @@ bot.on('message', message => {
 bot.on("messageReactionAdd", async (reaction, user) => {
     if (reaction.message.partial) await reaction.message.fetch();
     if (user && !user.bot) {
-        React.parse(reaction, user);
+        React.parse(reaction, user, Discord);
     }
 });
 
