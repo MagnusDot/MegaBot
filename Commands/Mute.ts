@@ -33,7 +33,6 @@ export class Mute extends Command {
     let time: string = args[1];
     let reason = message.content.match(/"([^"]+)"/);
 
-    console.log(reason)
     if (reason === null) {
       reason = "no reason";
     } else {

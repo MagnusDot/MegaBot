@@ -20,10 +20,10 @@ export class Help extends Command {
         { name: '```$ping```', value: "Are you lagging ? Or I'am ?" },
         { name: '```poll```', value: "\n Create a poll for everyone  \n ```$poll \"this is a question\" \"option1,option2,option3\" timeout" + "(minutes) ``` " },
           {name: "ADMINISTRATOR COMMAND", value:'__________________________'},
-          { name: '```$mute```', value: "ADMINISTRATOR : \n mute the one you want ! \n ```$mute @user 1d \"insult\"``` " },
-        { name: '```$unmute```', value: "ADMINISTRATOR : \n unmute the one you want ! \n ```$unmute @user``` " },
-          { name: '```$addRoleReact```', value: "ADMINISTRATOR : \n Add a message to react !  \n ```$addRoleReact messageidToReact``` " },
-          { name: '```$addRoleTo```', value: "ADMINISTRATOR : \n Add an emojy => role !  \n ```$addRoleTo messageidToReact Emojy @role``` " }
+          { name: '```$mute```', value: "\n mute the one you want ! \n ```$mute @user 1d \"insult\"``` " },
+        { name: '```$unmute```', value: "\n unmute the one you want ! \n ```$unmute @user``` " },
+          { name: '```$addRoleReact```', value: "\n Add a message to react !  \n ```$addRoleReact messageidToReact``` " },
+          { name: '```$addRoleTo```', value: "\n Add an emojy => role !  \n ```$addRoleTo messageidToReact Emojy @role``` " }
 
       )
       .setTimestamp()
