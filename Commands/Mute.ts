@@ -31,8 +31,9 @@ export class Mute extends Command {
       .value()
 
     let time: string = args[1];
-    let reason = message.content.match(/"([^']+)"/);
+    let reason = message.content.match(/"([^"]+)"/);
 
+    console.log(reason)
     if (reason === null) {
       reason = "no reason";
     } else {
@@ -111,7 +112,7 @@ export class Mute extends Command {
       .setDescription('You need to know how to mute')
       .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
       .addFields(
-        { name: 'How ?', value: "The command work like that : $mute @user 1d 'insult' " },
+        { name: 'How ?', value: "The command work like that : $mute @user 1d \"insult\" " },
       )
       .setTimestamp()
       .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
@@ -128,7 +129,7 @@ export class Mute extends Command {
     switch (String(interval).toLowerCase()) {
       case 'y': ret.setFullYear(ret.getFullYear() + units); checkRollover(); break;
       case 'q': ret.setMonth(ret.getMonth() + 3 * units); checkRollover(); break;
-      case 'm': ret.setMonth(ret.getMonth() + units); checkRollover(); break;
+      case 'mo': ret.setMonth(ret.getMonth() + units); checkRollover(); break;
       case 'w': ret.setDate(ret.getDate() + 7 * units); break;
       case 'd': ret.setDate(ret.getDate() + units); break;
       case 'h': ret.setTime(ret.getTime() + units * 3600000); break;
