@@ -21,5 +21,15 @@ export class Unmute extends Command {
           .assign({ muted: {} })
           .write()
 
+        const Embed = new Discord.MessageEmbed()
+            .setColor('#0099ff')
+            .setTitle('The user has been unmuted ! ')
+            .setAuthor('UnMutec =>' + user.name, 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+            .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+            .setTimestamp()
+            .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
+
+        message.channel.send(Embed);
+
     }
 }

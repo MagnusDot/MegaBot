@@ -69,6 +69,15 @@ export class Mute extends Command {
           "explained": 0
         }
       }).write()
+      const Embed = new Discord.MessageEmbed()
+          .setColor('#0099ff')
+          .setTitle('The user has been muted ! ')
+          .setAuthor('Muted  =>' + user.name, 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+          .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+          .setTimestamp()
+          .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
+
+      message.channel.send(Embed);
     } else {
       db.get('user')
         .find({ id: userId })
@@ -81,6 +90,16 @@ export class Mute extends Command {
           }
         })
         .write()
+
+      const Embed = new Discord.MessageEmbed()
+          .setColor('#0099ff')
+          .setTitle('The user has been muted ! ')
+          .setAuthor('Muted  =>' + user.name, 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+          .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+          .setTimestamp()
+          .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
+
+      message.channel.send(Embed);
     }
   }
 
