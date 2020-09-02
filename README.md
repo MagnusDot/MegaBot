@@ -7,10 +7,11 @@ Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&
 
 # New Features! V0.1
 
-  - Mute user : ```$mute 1d @user``` ( mute user during one day )
-  - Unmute User : ```$unmute @user``` ( unmute the user)
   - Ping the bot : ```$ping``` ( if you need to see the lag betwwen us)
   - Help : ```$help``` ( if you need this help with the command )
+  - Poll : ```$poll "this is a question" "option1,option2,option3" timeout(minutes)``` ( if you need to create poll with result )
+  - Mute user : ```$mute 1d @user``` ( mute user during one day )
+  - Unmute User : ```$unmute @user``` ( unmute the user)
   - Add React Message base : ```$addRoleReact messageidToReact``` ( Needed to init the message reaction base)
   - Add React emojy then Role : ```$addRoleTo messageidToReact Emojy @role``` ( init bot reaction when the emojy is fired )
 
