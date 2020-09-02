@@ -5,7 +5,15 @@ MegaBot was created to bring together all the possible features of bots existing
 Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&permissions=8&scope=bot
 
 
-# New Features! V0.1
+# New Features! V0.1.1
+-
+- Make a poll : $poll "this is a question" "option1,option2,option3" 1 ( time in minutes )  ( Make a poll for everything ! )
+- Create notification for each action your making ! 
+
+## Correction 
+- now you can't have conflict with multiple message id
+
+# Features 
 
   - Ping the bot : ```$ping``` ( if you need to see the lag betwwen us)
   - Help : ```$help``` ( if you need this help with the command )
