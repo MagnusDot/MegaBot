@@ -15,14 +15,15 @@ export class Help extends Command {
       .setDescription('You need to know !')
       .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
       .addFields(
-        { name: 'Install the bot ', value: "LINK HERE" },
+        { name: 'Install the bot ', value: "https://discord.com/api/oauth2/authorize?client_id=746452184777883690&permissions=8&scope=bot" },
         { name: '```$help```', value: "You can have this overlay to know how to use this bot !" },
         { name: '```$ping```', value: "Are you lagging ? Or I'am ?" },
-        { name: '```$mute```', value: "ADMINISTRATOR : \n mute the one you want ! \n ```$mute @user 1d \"insult\"``` " },
+        { name: '```poll```', value: "\n Create a poll for everyone  \n ```$poll \"this is a question\" \"option1,option2,option3\" timeout" + "(minutes) ``` " },
+          {name: "ADMINISTRATOR COMMAND", value:'__________________________'},
+          { name: '```$mute```', value: "ADMINISTRATOR : \n mute the one you want ! \n ```$mute @user 1d \"insult\"``` " },
         { name: '```$unmute```', value: "ADMINISTRATOR : \n unmute the one you want ! \n ```$unmute @user``` " },
           { name: '```$addRoleReact```', value: "ADMINISTRATOR : \n Add a message to react !  \n ```$addRoleReact messageidToReact``` " },
-          { name: '```$addRoleTo```', value: "ADMINISTRATOR : \n Add an emojy => role !  \n ```$addRoleTo messageidToReact Emojy @role``` " },
-
+          { name: '```$addRoleTo```', value: "ADMINISTRATOR : \n Add an emojy => role !  \n ```$addRoleTo messageidToReact Emojy @role``` " }
 
       )
       .setTimestamp()
