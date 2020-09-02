@@ -25,6 +25,22 @@ export class Poll extends Command {
 
     }
 
+    static help(message, Discord){
+        const Embed = new Discord.MessageEmbed()
+            .setColor('#0099ff')
+            .setTitle('How to use ?')
+            .setAuthor('$poll', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+            .setDescription('You need to declare a a new poll ? ')
+            .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+            .addFields(
+                { name: 'How to do a poll ? ', value: "The command work like that : \n $poll \"this is a question\" \"option1,option2,option3\" timeout" + " ( minutes )  " },
+            )
+            .setTimestamp()
+            .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
+
+        message.channel.send(Embed);
+    }
+
 
 
     static action(msg, Discord, bot) {
@@ -33,6 +49,7 @@ export class Poll extends Command {
         const args = msg.content.slice(5).trim();
         let params = this.params(args);
         if(params.length != 3){
+            this.help(msg, Discord)
             return;
         }
 
