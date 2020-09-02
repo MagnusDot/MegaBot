@@ -6,7 +6,7 @@ Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&
 
 
 # New Features! V0.1.1
--
+
 - Make a poll : $poll "this is a question" "option1,option2,option3" 1 ( time in minutes )  ( Make a poll for everything ! )
 - Create notification for each action your making ! 
 
