@@ -8,6 +8,7 @@ lerna-debug.log*
 *.js
 *.js.map
 config.js
+Database/*
 /.idea
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
