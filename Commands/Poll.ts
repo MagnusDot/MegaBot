@@ -90,7 +90,6 @@ export class Poll extends Command {
                 if (time) {
                     setTimeout(() => {
                         // Re-fetch the message and get reaction counts
-                        console.log(message.id)
                         message.channel.messages.fetch(message.id)
                             .then(async function (message) {
                                 let reactionCountsArray = [];
@@ -105,7 +104,6 @@ export class Poll extends Command {
                                     else if (reactionCountsArray[i] === max) indexMax.push(i);
 
                                 // Display winner(s)
-                                console.log(reactionCountsArray); // Debugging votes
                                 let winnersText = "";
                                 if (reactionCountsArray[indexMax[0]] == 0) {
                                     winnersText = "No one voted!"

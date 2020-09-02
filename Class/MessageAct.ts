@@ -1,10 +1,10 @@
 export class MessageAct {
 
-    static parse(message, user) {
+    static parse(message, user, Discord) {
         if(user.bot) return;
 
         if (this.match(message)) {
-            this.action(message, user);
+            this.action(message, user, Discord);
             return true
         }
         return false
@@ -14,7 +14,7 @@ export class MessageAct {
         return false
     }
 
-    static action(message, user) {
+    static action(message, user, Discord) {
 
     }
 

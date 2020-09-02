@@ -38,7 +38,36 @@ export class AddRole extends Command {
            let msg = serverDb.messages;
            msg.map( data => {
                if(data.id == messageId){
-                   data.reaction.push({emojy: emojy, role: role})
+                   let verify:Boolean = false;
+                   data.reaction.map(rea =>{
+                       if(rea.emojy == emojy){
+                           verify = true;
+                       }
+                   })
+                   if(verify != true){
+                       data.reaction.push({emojy: emojy, role: role})
+
+                       const Embed = new Discord.MessageEmbed()
+                           .setColor('#0099ff')
+                           .setTitle('The reaction role has been added')
+                           .setAuthor('Added ' + emojy + "=>" + role, 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                           .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                           .setTimestamp()
+                           .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
+
+                       message.author.send(Embed);
+                   }else{
+                       const Embed = new Discord.MessageEmbed()
+                           .setColor('#0099ff')
+                           .setTitle('The emojy is already Used')
+                           .setAuthor('$addRoleTo', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                           .setDescription('The emojy is already Used with the message ! ')
+                           .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                           .setTimestamp()
+                           .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
+
+                       message.author.send(Embed);
+                   }
                }
             })
             db.get('server')
