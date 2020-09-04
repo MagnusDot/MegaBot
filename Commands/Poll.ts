@@ -1,4 +1,4 @@
-import { Command } from '../Class/command';
+import {Command} from '../Class/command';
 
 export class Poll extends Command {
 
@@ -7,25 +7,25 @@ export class Poll extends Command {
     }
 
 
-    static params(commandLine){
-            let doubleDoubleQuote = '<DDQ>' ;
-            while( commandLine.indexOf( doubleDoubleQuote ) > -1 ) doubleDoubleQuote += '@' ;
-            let noDoubleDoubleQuotes = commandLine.replace( /""/g, doubleDoubleQuote ) ;
-            let spaceMarker = '<SP>' ;
-            while( commandLine.indexOf( spaceMarker ) > -1 ) spaceMarker += '@' ;
-            let noSpacesInQuotes = noDoubleDoubleQuotes.replace( /"([^"]*)"?/g, ( fullMatch, capture ) => {
-                return capture.replace( / /g, spaceMarker )
-                    .replace( RegExp( doubleDoubleQuote, 'g' ), '"' ) ;
-            }) ;
-            let mangledParamArray = noSpacesInQuotes.split( / +/ ) ;
-            return mangledParamArray.map( ( mangledParam ) => {
-                return mangledParam.replace( RegExp( spaceMarker,       'g' ), ' ' )
-                    .replace( RegExp( doubleDoubleQuote, 'g' ), ''  ) ;
-            });
+    static params(commandLine) {
+        let doubleDoubleQuote = '<DDQ>';
+        while (commandLine.indexOf(doubleDoubleQuote) > -1) doubleDoubleQuote += '@';
+        let noDoubleDoubleQuotes = commandLine.replace(/""/g, doubleDoubleQuote);
+        let spaceMarker = '<SP>';
+        while (commandLine.indexOf(spaceMarker) > -1) spaceMarker += '@';
+        let noSpacesInQuotes = noDoubleDoubleQuotes.replace(/"([^"]*)"?/g, (fullMatch, capture) => {
+            return capture.replace(/ /g, spaceMarker)
+                .replace(RegExp(doubleDoubleQuote, 'g'), '"');
+        });
+        let mangledParamArray = noSpacesInQuotes.split(/ +/);
+        return mangledParamArray.map((mangledParam) => {
+            return mangledParam.replace(RegExp(spaceMarker, 'g'), ' ')
+                .replace(RegExp(doubleDoubleQuote, 'g'), '');
+        });
 
     }
 
-    static help(message, Discord){
+    static help(message, Discord) {
         const Embed = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle('How to use ?')
@@ -33,7 +33,10 @@ export class Poll extends Command {
             .setDescription('You need to declare a a new poll ? ')
             .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
             .addFields(
-                { name: 'How to do a poll ? ', value: "The command work like that : \n $poll \"this is a question\" \"option1,option2,option3\" timeout" + " ( minutes )  " },
+                {
+                    name: 'How to do a poll ? ',
+                    value: "The command work like that : \n $poll \"this is a question\" \"option1,option2,option3\" timeout" + " ( minutes )  "
+                },
             )
             .setTimestamp()
             .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
@@ -42,22 +45,21 @@ export class Poll extends Command {
     }
 
 
-
     static action(msg, Discord, bot) {
 
 
         const args = msg.content.slice(5).trim();
         let params = this.params(args);
-        if(params.length != 3){
-            this.help(msg, Discord)
+        if (params.length != 3) {
+            this.help(msg, Discord);
             return;
         }
 
-        let question = params[0]
+        let question = params[0];
         let options = params[1];
-        let time = parseInt(params[2])
+        let time = parseInt(params[2]);
 
-        let emojiList = ['1⃣','2⃣','3⃣','4⃣','5⃣','6⃣','7⃣','8⃣','9⃣','🔟'];
+        let emojiList = ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣', '8⃣', '9⃣', '🔟'];
         let optionsList = options.split(",");
 
         let optionsText = "";

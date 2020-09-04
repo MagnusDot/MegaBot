@@ -1,26 +1,25 @@
 import * as Discord from "discord.js";
 import * as config from './config';
-import low = require("lowdb")
-import FileSync = require("lowdb/adapters/FileSync")
+import low = require("lowdb");
+import FileSync = require("lowdb/adapters/FileSync");
 
 const bot = new Discord.Client({partials: Object.values(Discord.Constants.PartialTypes)});
 
 
-const adapter = new FileSync('Database/db.json')
-const db = low(adapter)
+const adapter = new FileSync('Database/db.json');
+const db = low(adapter);
 db.defaults({user: []})
-    .write()
+    .write();
 
-const Roleadapter = new FileSync('Database/messageRole.json')
-const Roledb = low(Roleadapter)
+const Roleadapter = new FileSync('Database/messageRole.json');
+const Roledb = low(Roleadapter);
 Roledb.defaults({server: []})
-    .write()
+    .write();
 
 import {ping} from "./Commands/ping"
 import {Users} from "./Commands/Users"
 import {Mute} from "./Commands/Mute";
 import {Help} from "./Commands/Help";
-import {Reaction} from "./Commands/Reaction";
 import {AddRole} from "./Commands/AddRole";
 import {React} from "./Commands/React/React";
 import {Poll} from "./Commands/Poll";
@@ -39,10 +38,9 @@ bot.on('ready', () => {
 bot.on('message', message => {
     if (message.channel.type !== 'dm') {
         ping.parse(message, Discord, bot);
-        Users.parse(message, Discord, bot)
+        Users.parse(message, Discord, bot);
         Mute.parse(message, Discord, bot);
         Help.parse(message, Discord, bot);
-        Reaction.parse(message, Discord, bot);
         AddRole.parse(message, Discord, bot);
         Poll.parse(message, Discord, bot);
     }
