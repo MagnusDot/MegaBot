@@ -5,7 +5,7 @@ import FileSync = require("lowdb/adapters/FileSync");
 export class AddRole extends Command {
 
     static match(message) {
-        return message.content.startsWith('$addRoleTo')
+        return message.content.startsWith('$addRole')
     }
 
     static action(message, Discord, bot) {
@@ -130,13 +130,13 @@ export class AddRole extends Command {
         const Embed = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle('How to use ?')
-            .setAuthor('$addRoleTo', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+            .setAuthor('$addRole', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
             .setDescription('This is how you assign a role to an user by a reaction')
             .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
             .addFields(
                 {
                     name: 'How to add role react',
-                    value: "The command work like that : $addRoleTo messageidToReact Emojy @role "
+                    value: "The command work like that : $addRole messageidToReact Emojy @role "
                 },
             )
             .setTimestamp()
