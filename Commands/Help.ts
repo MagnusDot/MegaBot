@@ -32,7 +32,15 @@ export class Help extends Command {
                 {
                     name: '```$addRole```',
                     value: "\n Add an emojy => role to a specific message ! \n ```$addRole messageidToReact Emojy @role``` "
-                }
+                },
+                {
+                    name: '```$deleteRole```',
+                    value: "```$deleteRole messageidToReact Emojy```"
+                },
+                {
+                    name: '```$rolelist```',
+                    value: "This is a list of every role reaction"
+                },
             )
             .setTimestamp()
             .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
