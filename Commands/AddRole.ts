@@ -14,7 +14,7 @@ export class AddRole extends Command {
         const adapter = new FileSync('Database/messageRole.json');
         const db = low(adapter);
 
-        const args = message.content.slice(10).trim().split(' ');
+        const args = message.content.slice(8).trim().split(' ');
         if (args[0] === '' || args.length != 3) {
             this.howtoUse(message, Discord);
             return;

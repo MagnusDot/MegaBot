@@ -12,6 +12,5 @@ export class ping extends Command {
             msg.edit(`Pong ! Latency is ${msg.createdTimestamp - message.createdTimestamp}ms`);
         })
 
-
     }
 }
