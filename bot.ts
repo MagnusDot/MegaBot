@@ -23,6 +23,7 @@ import {Help} from "./Commands/Help";
 import {AddRole} from "./Commands/AddRole";
 import {React} from "./Commands/React/React";
 import {Poll} from "./Commands/Poll";
+import {ListRole} from "./Commands/ListRole";
 
 
 bot.on('ready', () => {
@@ -43,6 +44,7 @@ bot.on('message', message => {
         Help.parse(message, Discord, bot);
         AddRole.parse(message, Discord, bot);
         Poll.parse(message, Discord, bot);
+        ListRole.parse(message, Discord, bot);
     }
 });
 
