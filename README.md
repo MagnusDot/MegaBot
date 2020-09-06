@@ -5,10 +5,9 @@ MegaBot was created to bring together all the possible features of bots existing
 Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&permissions=8&scope=bot
 
 
-# New Features! V0.1.1
-
-- Make a poll : $poll "this is a question" "option1,option2,option3" 1 ( time in minutes )  ( Make a poll for everything ! )
-- Create notification for each action your making ! 
+# New Features! V0.1.2
+- Delete Role : ```$deleteRole messageidToReact Emojy```
+- role List : ```$rolelist``` This is a list of every role reaction
 
 ## Correction 
 - now you can't have conflict with multiple message id
