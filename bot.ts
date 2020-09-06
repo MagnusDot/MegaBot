@@ -24,6 +24,7 @@ import {AddRole} from "./Commands/AddRole";
 import {React} from "./Commands/React/React";
 import {Poll} from "./Commands/Poll";
 import {ListRole} from "./Commands/ListRole";
+import {DeleteRole} from "./Commands/DeleteRole";
 
 
 bot.on('ready', () => {
@@ -45,6 +46,7 @@ bot.on('message', message => {
         AddRole.parse(message, Discord, bot);
         Poll.parse(message, Discord, bot);
         ListRole.parse(message, Discord, bot);
+        DeleteRole.parse(message, Discord, bot);
     }
 });
 
