@@ -10,6 +10,7 @@ export class AddRole extends Command {
 
     static action(message, Discord, bot) {
         if (!message.member.hasPermission('MANAGE_MESSAGES')) return;
+        message.delete();
         const adapter = new FileSync('Database/messageRole.json');
         const db = low(adapter);
 

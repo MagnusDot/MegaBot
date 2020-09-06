@@ -80,7 +80,7 @@ export class Poll extends Command {
             embed.setFooter(`The poll has started and has no end time`);
         }
 
-        //msg.delete(); // Remove the user's command message
+        msg.delete(); // Remove the user's command message
 
         msg.channel.send({embed}) // Definitely use a 2d array here..
             .then(async function (message) {
