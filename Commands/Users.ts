@@ -42,7 +42,7 @@ export class Users extends Command {
                             {name: '\u200B', value: '\u200B'},
                             {name: 'Muted By : ', value: User.muted.administrator, inline: true},
                         )
-                        .addField('You have to wait : ', this.sec2time(User.muted.until - Date.now()), true)
+                        .addField('You have to wait : ', this.sec2time(( User.muted.until / 1000 ) - ( new Date().getTime() / 1000 ) ), true)
                         .setImage('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
                         .setTimestamp()
                         .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
