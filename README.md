@@ -1,5 +1,9 @@
 # Mega Bot ! 
 
+[![Foo](https://img.shields.io/github/issues/MagnusDot/MegaBot)](https://github.com/MagnusDot/MegaBot/)
+[![Foo](https://img.shields.io/badge/Online-True-brightgreen)](https://github.com/MagnusDot/MegaBot/)
+
+
 MegaBot was created to bring together all the possible features of bots existing on discord. We are fed up with hundreds of bots that look alike and populate the same discord server! So we want to create a unique discord bot that brings everything together in security and simplicity!
 
 Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&permissions=8&scope=bot
