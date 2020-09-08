@@ -1,6 +1,5 @@
 # Mega Bot ! 
 
-[![Foo](https://img.shields.io/github/issues/MagnusDot/MegaBot)](https://github.com/MagnusDot/MegaBot/)
 [![Foo](https://img.shields.io/badge/Online-True-brightgreen)](https://github.com/MagnusDot/MegaBot/)
 
 
