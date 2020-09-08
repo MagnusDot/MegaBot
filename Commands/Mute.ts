@@ -73,7 +73,7 @@ export class Mute extends Command {
             const Embed = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle('The user has been muted ! ')
-                .setAuthor('Muted  =>' + user.name, 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                .setAuthor('Muted  => ' + user.username, 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
                 .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
                 .setTimestamp()
                 .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
@@ -95,7 +95,7 @@ export class Mute extends Command {
             const Embed = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle('The user has been muted ! ')
-                .setAuthor('Muted  =>' + user.name, 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                .setAuthor('Muted  => ' + user.username, 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
                 .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
                 .setTimestamp()
                 .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
