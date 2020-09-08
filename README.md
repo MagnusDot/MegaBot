@@ -7,12 +7,7 @@ MegaBot was created to bring together all the possible features of bots existing
 
 Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&permissions=8&scope=bot
 
-
-# New Features! V0.1.2
-- Delete Role : ```$deleteRole messageidToReact Emojy```
-- role List : ```$rolelist``` This is a list of every role reaction
-
-## Correction 
+## Correction V0.1.3
 - now you can't have conflict with multiple message id
 - Fix name undefined when the user is muted
 - Fix wrong time logged when a user is muted
@@ -25,6 +20,8 @@ Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&
   - Mute user : ```$mute 1d @user``` ( mute user during one day )
   - Unmute User : ```$unmute @user``` ( unmute the user)
   - Add React emojy then Role : ```$addRole messageidToReact Emojy @role``` ( init bot reaction when the emojy is fired )
+  - Delete Role : ```$deleteRole messageidToReact Emojy```
+  - role List : ```$rolelist``` This is a list of every role reaction
 
 
 ### Development
