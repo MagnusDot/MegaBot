@@ -11,6 +11,8 @@ Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&
 
 ## Correction 
 - now you can't have conflict with multiple message id
+- Fix name undefined when the user is muted
+- Fix wrong time logged when a user is muted
 
 # Features 
 
