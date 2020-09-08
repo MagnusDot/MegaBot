@@ -40,4 +40,5 @@ then :
 ```
 $ npm i
 $ npm run build-ts
-$ npm run start```
+$ npm run start
+```
