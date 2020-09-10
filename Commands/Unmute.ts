@@ -11,7 +11,6 @@ export class Unmute extends Command {
 
     static action(message, Discord, bot) {
         if (!message.member.hasPermission('MANAGE_MESSAGES')) return;
-
         const user = message.mentions.users.first();
         const userId: string = message.guild.id + "_" + user.id;
         const adapter = new FileSync('Database/db.json');

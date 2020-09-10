@@ -25,6 +25,7 @@ import {React} from "./Commands/React/React";
 import {Poll} from "./Commands/Poll";
 import {ListRole} from "./Commands/ListRole";
 import {DeleteRole} from "./Commands/DeleteRole";
+import {Unmute} from "./Commands/Unmute";
 
 
 bot.on('ready', () => {
@@ -39,21 +40,20 @@ bot.on('ready', () => {
 
 bot.on('message', message => {
     if (message.channel.type !== 'dm') {
-        ping.parse(message, Discord, bot);
-        Users.parse(message, Discord, bot);
-        Mute.parse(message, Discord, bot);
-        Help.parse(message, Discord, bot);
-        AddRole.parse(message, Discord, bot);
-        Poll.parse(message, Discord, bot);
-        ListRole.parse(message, Discord, bot);
-        DeleteRole.parse(message, Discord, bot);
+        const commands = [ping, Users, Mute, Help, AddRole, Poll, ListRole, DeleteRole, Unmute]
+        commands.forEach(Command => {
+            Command.parse(message, Discord, bot);
+        })
     }
 });
 
 bot.on("messageReactionAdd", async (reaction, user) => {
     if (reaction.message.partial) await reaction.message.fetch();
     if (user && !user.bot) {
-        React.parse(reaction, user, Discord);
+        const reacts = [React]
+        reacts.forEach(react => {
+            react.parse(reaction, user, Discord);
+        })
     }
 });
 
