@@ -22,6 +22,7 @@ import {Mute} from "./Commands/Mute";
 import {Help} from "./Commands/Help";
 import {AddRole} from "./Commands/AddRole";
 import {React} from "./Commands/React/React";
+import {DeleteReaction} from "./Commands/React/DeleteReaction";
 import {Poll} from "./Commands/Poll";
 import {ListRole} from "./Commands/ListRole";
 import {DeleteRole} from "./Commands/DeleteRole";
@@ -56,5 +57,14 @@ bot.on("messageReactionAdd", async (reaction, user) => {
         })
     }
 });
+
+bot.on("messageReactionRemove", async (reaction, user) => {
+    if (reaction.message.partial) await reaction.message.fetch();
+    if (user && !user.bot) {
+        const reacts = [DeleteReaction]
+        reacts.forEach(react => {
+            react.parse(reaction, user, Discord);
+        })
+    }});
 
 bot.login(config.token);
