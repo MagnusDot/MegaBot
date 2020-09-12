@@ -7,10 +7,8 @@ MegaBot was created to bring together all the possible features of bots existing
 
 Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&permissions=8&scope=bot
 
-## Correction V0.1.3
-- now you can't have conflict with multiple message id
-- Fix name undefined when the user is muted
-- Fix wrong time logged when a user is muted
+## Correction V0.1.5
+- When a role is unchecked the user role is removed
 
 # Features 
 
