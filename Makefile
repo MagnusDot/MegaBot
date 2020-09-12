@@ -1,4 +1,4 @@
-update: stop update-git build start
+update: update-git build stop start
 
 stop:
 	forever stop bot.js
