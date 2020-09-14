@@ -16,6 +16,11 @@ const Roledb = low(Roleadapter);
 Roledb.defaults({server: []})
     .write();
 
+const Configadapter = new FileSync('Database/serverConfig.json');
+const Configdb = low(Configadapter);
+Configdb.defaults({server: []})
+    .write();
+
 import {ping} from "./Commands/ping"
 import {Users} from "./Commands/Users"
 import {Mute} from "./Commands/Mute";
@@ -29,6 +34,7 @@ import {DeleteRole} from "./Commands/React/DeleteRole";
 import {Unmute} from "./Commands/Unmute";
 import {Xp} from "./Commands/Lvl/Xp";
 import {GetLevel} from "./Commands/Lvl/GetLevel";
+import {Config} from "./Commands/Config";
 
 
 bot.on('ready', () => {
@@ -43,7 +49,7 @@ bot.on('ready', () => {
 
 bot.on('message', message => {
     if (message.channel.type !== 'dm') {
-        const commands = [ping, Users, Xp, Mute, Help, AddRole, Poll, ListRole, DeleteRole, Unmute, GetLevel]
+        const commands = [ping, Users, Xp, Mute, Help, AddRole, Poll, ListRole, DeleteRole, Unmute, GetLevel, Config]
         commands.forEach(Command => {
             Command.parse(message, Discord, bot);
         })

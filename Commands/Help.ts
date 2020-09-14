@@ -21,6 +21,7 @@ export class Help extends Command {
                     value: "https://discord.com/api/oauth2/authorize?client_id=746452184777883690&permissions=8&scope=bot"
                 },
                 {name: '```$help```', value: "You can have this overlay to know how to use this bot !"},
+                {name: '```$lvl```', value: "You can get you\'re current server lvl"},
                 {name: '```$ping```', value: "Are you lagging ? Or I'am ?"},
                 {
                     name: '```poll```',
