@@ -26,7 +26,7 @@ export class GetLevel extends Command {
         let bar = '['
 
         for (let i = 0; i < percent; i++) {
-            bar += '=';
+            bar += '█';
         }
         for (let i = 0; i < left; i++) {
             bar += '-';
@@ -38,7 +38,7 @@ export class GetLevel extends Command {
             .setTitle(`CURRENT LEVEL : ${UserLvl}`)
             .setAuthor('Muted  => ', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
             .addFields({name: 'ProgressBar', value: `${bar}`}, {
-                name: 'Next Level in ',
+                name: 'The Next Level up is in ',
                 value: `${(500 + (500 * User.UserLvl)) - User.UserXp} XP`
             },{
                     name: 'The Next Level is :',
