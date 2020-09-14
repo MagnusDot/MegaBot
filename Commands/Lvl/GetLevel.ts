@@ -36,14 +36,11 @@ export class GetLevel extends Command {
         const Embed = new Discord.MessageEmbed()
             .setColor('#12E811')
             .setTitle(`CURRENT LEVEL : ${UserLvl}`)
-            .setAuthor('Muted  => ', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
-            .addFields({name: 'ProgressBar', value: `${bar}`}, {
+            .setAuthor('MEGABOT', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+            .addFields({name: 'ProgressBar', value: `${User.UserLvl} - ${bar} - ${User.UserLvl +1}`}, {
                 name: 'The Next Level up is in ',
                 value: `${(500 + (500 * User.UserLvl)) - User.UserXp} XP`
-            },{
-                    name: 'The Next Level is :',
-                    value: `LVL ${UserLvl+1}`
-                }
+            }
             )
             .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
             .setTimestamp()
