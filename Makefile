@@ -1,4 +1,4 @@
-update: update-git build stop start
+update: update-git install build stop start
 
 stop:
 	forever stop bot.js
@@ -11,3 +11,6 @@ build:
 
 start:
 	forever start -o out.log bot.js
+
+install:
+	npm install
