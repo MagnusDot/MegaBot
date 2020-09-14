@@ -17,22 +17,22 @@ export class Xp extends Command {
         let User = db.get('user')
             .find({id: userId})
             .value();
-        if(User.userXp == undefined){
+        if(User.UserXp == undefined){
             User = db.get('user')
                 .find({id: userId})
                 .assign({
-                    userXp: 0,
+                    UserXp: 0,
                     UserLvl: 0,
                 })
                 .write()
         }
         let xpGained = Math.floor(Math.random() * 50) + 25
 
-        if(User.userXp + xpGained > 500 + ( 500 * User.UserLvl)){
+        if(User.UserXp + xpGained > 500 + ( 500 * User.UserLvl)){
             db.get('user')
                 .find({id: userId})
                 .assign({
-                    userXp: User.userXp + xpGained - (500 + ( 500 * User.UserLvl)) ,
+                    UserXp: User.UserXp + xpGained - (500 + ( 500 * User.UserLvl)) ,
                     UserLvl: User.UserLvl +1,
                 })
                 .write()
@@ -40,7 +40,7 @@ export class Xp extends Command {
             db.get('user')
                 .find({id: userId})
                 .assign({
-                    userXp: User.userXp + xpGained
+                    UserXp: User.UserXp + xpGained
                 })
                 .write()
         }

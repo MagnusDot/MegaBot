@@ -28,6 +28,7 @@ import {ListRole} from "./Commands/ListRole";
 import {DeleteRole} from "./Commands/DeleteRole";
 import {Unmute} from "./Commands/Unmute";
 import {Xp} from "./Commands/Lvl/Xp";
+import {GetLevel} from "./Commands/Lvl/GetLevel";
 
 
 bot.on('ready', () => {
@@ -42,7 +43,7 @@ bot.on('ready', () => {
 
 bot.on('message', message => {
     if (message.channel.type !== 'dm') {
-        const commands = [ping, Users, Xp, Mute, Help, AddRole, Poll, ListRole, DeleteRole, Unmute]
+        const commands = [ping, Users, Xp, Mute, Help, AddRole, Poll, ListRole, DeleteRole, Unmute, GetLevel]
         commands.forEach(Command => {
             Command.parse(message, Discord, bot);
         })
