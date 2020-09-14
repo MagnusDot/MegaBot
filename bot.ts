@@ -20,12 +20,12 @@ import {ping} from "./Commands/ping"
 import {Users} from "./Commands/Users"
 import {Mute} from "./Commands/Mute";
 import {Help} from "./Commands/Help";
-import {AddRole} from "./Commands/AddRole";
+import {AddRole} from "./Commands/React/AddRole";
 import {React} from "./Commands/React/React";
 import {DeleteReaction} from "./Commands/React/DeleteReaction";
 import {Poll} from "./Commands/Poll";
-import {ListRole} from "./Commands/ListRole";
-import {DeleteRole} from "./Commands/DeleteRole";
+import {ListRole} from "./Commands/React/ListRole";
+import {DeleteRole} from "./Commands/React/DeleteRole";
 import {Unmute} from "./Commands/Unmute";
 import {Xp} from "./Commands/Lvl/Xp";
 import {GetLevel} from "./Commands/Lvl/GetLevel";
