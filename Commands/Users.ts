@@ -24,7 +24,7 @@ export class Users extends Command {
                 id: userId,
                 server: message.guild.id,
                 title: message.author.username,
-                userXp: 0,
+                UserXp: 0,
                 UserLvl: 0,
                 warn: 0,
                 muted: {}
