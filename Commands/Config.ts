@@ -24,13 +24,24 @@ export class Config extends Command {
                 .write();
         }
 
-        const args = message.content.slice(5).trim().split(' ');
-        if (args[0] === '') {
+        const args = message.content.slice(7).trim().split(' ');
+        if (args.length == 1) {
             return;
         }
+        this.VerificationOfExistence(Guild,db,message);
+
 
         message.channel.send('oui');
+    }
 
+    static VerificationOfExistence(Guild, db, message){
+        if(Guild.LvlActivate == undefined){
+            console.log("oo")
+            db.get('server')
+                .find({id: message.guild.id})
+                .assign({LvlActivate: true})
+                .write();
+        }
 
     }
 }
