@@ -9,7 +9,7 @@ export class Mute extends Command {
     }
 
     static action(message, Discord, bot) {
-        if (!message.member.hasPermission('MANAGE_MESSAGES')) return;
+        if (!message.member.hasPermission('ADMINISTRATOR')) return;
         const args = message.content.slice(5).trim().split(' ');
         if (args[0] === '') {
             this.howToMute(message, Discord);
