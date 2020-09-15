@@ -18,7 +18,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
-    - run: echo '{token:"lol"}' > config.json
+    - run: echo 'module.exports = {token:"lol"}' > config.json
     - run: npm run build-ts
       env:
         CI: true
