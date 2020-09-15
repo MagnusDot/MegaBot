@@ -7,19 +7,26 @@ MegaBot was created to bring together all the possible features of bots existing
 
 Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&permissions=8&scope=bot
 
-## Correction V0.1.5
-- When a role is unchecked the user role is removed
-
+## NEW Feature V0.1.6
+  - Level : ```$lvl``` ( You can check you're lvl if the server allow it )
+  - Configuration : 
+      - ```$config lvl (true|false)``` : Enable User level on the current server ! 
 # Features 
 
   - Ping the bot : ```$ping``` ( if you need to see the lag betwwen us)
   - Help : ```$help``` ( if you need this help with the command )
+  - Level : ```$lvl``` ( You can check you're lvl if the server allow it )
   - Poll : ```$poll "this is a question" "option1,option2,option3" timeout(minutes)``` ( if you need to create poll with result )
+
+  #### ADMINISTRATOR COMMAND
   - Mute user : ```$mute 1d @user``` ( mute user during one day )
   - Unmute User : ```$unmute @user``` ( unmute the user)
   - Add React emojy then Role : ```$addRole messageidToReact Emojy @role``` ( init bot reaction when the emojy is fired )
   - Delete Role : ```$deleteRole messageidToReact Emojy```
   - role List : ```$rolelist``` This is a list of every role reaction
+  - Configuration : 
+      - ```$config lvl (true|false)``` : Enable User level on the current server ! 
+
 
 
 ### Development
