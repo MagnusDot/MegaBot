@@ -1,6 +1,7 @@
 import {Command} from '../../Class/command';
 import low = require("lowdb");
 import FileSync = require("lowdb/adapters/FileSync");
+import {Config} from "../Config";
 
 export class GetLevel extends Command {
 
@@ -9,6 +10,8 @@ export class GetLevel extends Command {
     }
 
     static action(message, Discord, bot) {
+
+        Config.VerificationOfExistence(message)
 
         const adapter = new FileSync('Database/db.json');
         const db = low(adapter);

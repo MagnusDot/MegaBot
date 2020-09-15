@@ -18,7 +18,7 @@ export class Config extends Command {
             .find({id: message.guild.id})
             .value();
 
-        if(Guild == undefined){
+        if (Guild == undefined) {
             db.get('server')
                 .push({id: message.guild.id})
                 .write();
@@ -28,20 +28,26 @@ export class Config extends Command {
         if (args.length == 1) {
             return;
         }
-        this.VerificationOfExistence(Guild,db,message);
+
+        this.VerificationOfExistence(message);
 
 
         message.channel.send('oui');
     }
 
-    static VerificationOfExistence(Guild, db, message){
-        if(Guild.LvlActivate == undefined){
-            console.log("oo")
+    static VerificationOfExistence(message) {
+        const adapter = new FileSync('Database/serverConfig.json');
+        const db = low(adapter);
+
+        let Guild = db.get('server')
+            .find({id: message.guild.id})
+            .value();
+
+        if (Guild.LvlActivate == undefined) {
             db.get('server')
                 .find({id: message.guild.id})
                 .assign({LvlActivate: true})
                 .write();
         }
-
     }
 }
