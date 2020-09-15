@@ -1,4 +1,4 @@
-import {Command} from '../Class/command';
+import {Command} from '../../Class/command';
 import low = require("lowdb");
 import FileSync = require("lowdb/adapters/FileSync");
 
