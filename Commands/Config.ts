@@ -9,6 +9,7 @@ export class Config extends Command {
     }
 
     static action(message, Discord, bot) {
+        if (!message.member.hasPermission('ADMINISTRATOR')) return;
 
         const adapter = new FileSync('Database/serverConfig.json');
         const db = low(adapter);
@@ -23,7 +24,6 @@ export class Config extends Command {
                 .write();
         }
 
-        if (!message.member.hasPermission('ADMINISTRATOR')) return;
         const args = message.content.slice(5).trim().split(' ');
         if (args[0] === '') {
             return;
