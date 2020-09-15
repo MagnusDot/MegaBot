@@ -10,6 +10,10 @@ export class Config extends Command {
 
     static action(message, Discord, bot) {
         if (!message.member.hasPermission('ADMINISTRATOR')) return;
+        const args = message.content.slice(7).trim().split(' ');
+        if (args[0] == '') {
+            return;
+        }
 
         const adapter = new FileSync('Database/serverConfig.json');
         const db = low(adapter);
@@ -24,14 +28,8 @@ export class Config extends Command {
                 .write();
         }
 
-        const args = message.content.slice(7).trim().split(' ');
-        if (args.length == 1) {
-            return;
-        }
-
         this.VerificationOfExistence(message);
-
-
+        
         message.channel.send('oui');
     }
 
