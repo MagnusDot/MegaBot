@@ -63,6 +63,12 @@ export class Config extends Command {
         let Guild = db.get('server')
             .find({id: message.guild.id})
             .value();
+        if (Guild == undefined) {
+            db.get('server')
+                .push({id: message.guild.id})
+                .write();
+            return;
+        }
 
         if (Guild.LvlActivate == undefined) {
             db.get('server')

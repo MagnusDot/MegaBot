@@ -12,7 +12,6 @@ export class Users extends Command {
 
         const adapter = new FileSync('Database/db.json');
         const db = low(adapter);
-
         const userId: string = message.guild.id + "_" + message.author.id;
 
         let User = db.get('user')
