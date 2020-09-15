@@ -42,6 +42,11 @@ export class Help extends Command {
                     name: '```$rolelist```',
                     value: "This is a list of every role reaction"
                 },
+                {name: "\n CONFIG COMMAND", value: '__________________________'},
+                {
+                    name: '```$config lvl```',
+                    value: "\n Enable / Disable lvl update \n ```$config lvl (true|false) ```"
+                }
             )
             .setTimestamp()
             .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');

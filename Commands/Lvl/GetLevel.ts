@@ -12,6 +12,8 @@ export class GetLevel extends Command {
     static action(message, Discord, bot) {
 
         Config.VerificationOfExistence(message)
+        const permission = Config.ExpectedConfigResult(Config.GetArgument(message,'LvlActivate'), true)
+        if (!permission) return
 
         const adapter = new FileSync('Database/db.json');
         const db = low(adapter);
