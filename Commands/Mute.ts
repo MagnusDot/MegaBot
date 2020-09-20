@@ -50,7 +50,7 @@ export class Mute extends Command {
             return;
         }
 
-        const finalBan = this.dateAdd(new Date, TimeVariation, 1).getTime();
+        const finalBan = this.dateAdd(new Date, TimeVariation, timeDuration).getTime();
 
         if (finalBan === undefined) {
             this.howToMute(message, Discord);
@@ -124,7 +124,7 @@ export class Mute extends Command {
     static dateAdd(date, interval, units) {
         if (!(date instanceof Date))
             return undefined;
-        var ret = new Date(date); //don't change original date
+        var ret = date; //don't change original date
         var checkRollover = function () {
             if (ret.getDate() != date.getDate()) ret.setDate(0);
         };
