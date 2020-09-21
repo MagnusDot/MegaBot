@@ -14,9 +14,8 @@ export class Help extends Command {
             {name: '```$help```', value: "You can have this overlay to know how to use this bot !"},
             {name: '```$lvl```', value: "You can get you\'re current server lvl"},
             {name: '```$ping```', value: "Are you lagging ? Or I'am ?"},
-            {name: '```poll```', value: "\n Create a poll for everyone  \n ```$poll \"this is a question\" \"option1,option2,option3\" timeout" + "(minutes) ``` "},
-            {name: 'ADMINISTRATOR COMMAND', value: "Be an admin ;)"}];
-
+            {name: '```poll```', value: "\n Create a poll for everyone  \n ```$poll \"this is a question\" \"option1,option2,option3\" timeout" + "(minutes) ``` "}];
+        let AdminWarning =[{name: 'ADMINISTRATOR COMMAND', value: "Be an admin ;)"}];
         let Admin = [
             {name: "ADMINISTRATOR COMMAND", value: '__________________________'},
             {name: '```$mute```', value: "\n mute the one you want ! \n ```$mute @user 1d \"insult\"``` "},
@@ -30,7 +29,7 @@ export class Help extends Command {
         if(message.member.hasPermission('ADMINISTRATOR')){
              result = User.concat(Admin)
         }else{
-             result = User
+             result = User.concat(AdminWarning)
         }
 
         const Embed = new Discord.MessageEmbed()
