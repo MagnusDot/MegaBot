@@ -7,10 +7,12 @@ MegaBot was created to bring together all the possible features of bots existing
 
 Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&permissions=8&scope=bot
 
-## NEW Features V0.1.6
-  - Level : ```$lvl``` ( You can check you're lvl if the server allow it )
-  - Configuration : 
-      - ```$config lvl (true|false)``` : Enable User level on the current server ! 
+## NEW Features V0.1.7
+~~
+### Correction 
+- Fix Mute delay
+- Change the ```$help``` function
+
 # Features 
 
   - Ping the bot : ```$ping``` ( if you need to see the lag betwwen us)
