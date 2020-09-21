@@ -14,7 +14,8 @@ export class Help extends Command {
             {name: '```$help```', value: "You can have this overlay to know how to use this bot !"},
             {name: '```$lvl```', value: "You can get you\'re current server lvl"},
             {name: '```$ping```', value: "Are you lagging ? Or I'am ?"},
-            {name: '```poll```', value: "\n Create a poll for everyone  \n ```$poll \"this is a question\" \"option1,option2,option3\" timeout" + "(minutes) ``` "}];
+            {name: '```poll```', value: "\n Create a poll for everyone  \n ```$poll \"this is a question\" \"option1,option2,option3\" timeout" + "(minutes) ``` "},
+            {name: 'ADMINISTRATOR COMMAND', value: "Be an admin ;)"}];
 
         let Admin = [
             {name: "ADMINISTRATOR COMMAND", value: '__________________________'},
