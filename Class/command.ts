@@ -1,7 +1,7 @@
-export class Command {
+export abstract class Command{
 
     static parse(message, Discord, bot) {
-        if(message.author.bot) return;
+        if(message.author.bot) return false;
 
         if (this.match(message)) {
             this.action(message, Discord, bot);
@@ -14,12 +14,7 @@ export class Command {
         return false
     }
 
-    static action(message, Discord, bot) {
-
-    }
-
-    static Validated(message,text) {
-        message.author.send(text);
-    }
+    // @ts-ignore
+    static action(message, Discord, bot)
 
 }

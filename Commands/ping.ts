@@ -1,6 +1,6 @@
 import {Command} from '../Class/command';
 
-export class ping extends Command {
+export class ping extends Command{
 
     static match(message) {
         return message.content.startsWith('$ping')
