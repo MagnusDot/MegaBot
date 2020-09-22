@@ -1,4 +1,4 @@
-export class MessageAct {
+export abstract class MessageAct {
 
     static parse(message, user, Discord) {
         if(user.bot) return;
