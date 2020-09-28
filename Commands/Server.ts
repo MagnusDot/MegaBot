@@ -1,6 +1,4 @@
 import { Command } from '../Class/command';
-import low = require("lowdb");
-import FileSync = require("lowdb/adapters/FileSync");
 import { Config } from "./Config";
 
 export class Server extends Command {
@@ -12,9 +10,6 @@ export class Server extends Command {
     static action(message, Discord, bot) {
 
         Config.VerificationOfExistence(message);
-
-        const adapter = new FileSync('Database/db.json');
-        const db = low(adapter);
 
         const serverName = message.channel.guild.name
         const currentChannel = message.channel.name
