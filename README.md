@@ -17,8 +17,9 @@ Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&
 
   - Ping the bot : ```$ping``` ( if you need to see the lag betwwen us)
   - Help : ```$help``` ( if you need this help with the command )
-  - Level : ```$lvl``` ( You can check you're lvl if the server allow it )
+  - Level : ```$lvl``` ( You can check your lvl if the server allow it )
   - Poll : ```$poll "this is a question" "option1,option2,option3" timeout(minutes)``` ( if you need to create poll with result )
+  - Server : ```$server``` (Get some information about the server)
 
   #### ADMINISTRATOR COMMAND
   - Mute user : ```$mute 1d @user``` ( mute user during one day )
