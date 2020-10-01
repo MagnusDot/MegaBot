@@ -7,7 +7,7 @@ update-git:
 	git pull
 
 build:
-	npm run build-ts
+	npm run build
 
 start:
 	forever start -o out.log bot.js
