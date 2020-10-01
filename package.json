@@ -20,8 +20,9 @@
     "tsc-watch": "^4.2.9"
   },
   "scripts": {
-    "build-ts": "tsc",
+    "build": "tsc",
     "watch": "tsc -w",
+    "start-dev": "npm run watch && node bot.js",
     "start": "node bot.js"
   },
   "repository": {
