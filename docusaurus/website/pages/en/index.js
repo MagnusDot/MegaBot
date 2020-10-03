@@ -64,9 +64,9 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle tagline={siteConfig.tagline} title={siteConfig.title} />
           <PromoSection>
-            <Button href="#try">Try It Out</Button>
-            <Button href={docUrl('doc1.html')}>Example Link</Button>
-            <Button href={docUrl('doc2.html')}>Example Link 2</Button>
+            <Button href="https://discord.com/api/oauth2/authorize?client_id=746452184777883690&permissions=2147483639&scope=bot">Try It Out</Button>
+            <Button href={"https://github.com/MagnusDot/MegaBot"}>Contribute</Button>
+            <Button href={docUrl('doc1.html')}>Docs</Button>
           </PromoSection>
         </div>
       </SplashContainer>
