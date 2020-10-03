@@ -90,7 +90,7 @@ const siteConfig = {
   ogImage: 'img/jason.png',
   twitterImage: 'img/jason.png',
   docsSideNavCollapsible: true,
-
+  twitterUsername: "Magnus_TheDev",
    enableUpdateBy: true,
    enableUpdateTime: true,
   repoUrl: 'https://github.com/MagnusDot/MegaBot',

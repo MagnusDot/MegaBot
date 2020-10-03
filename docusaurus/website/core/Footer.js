@@ -43,23 +43,16 @@ class Footer extends React.Component {
             <h5>Community</h5>
             <a href={`${this.props.config.baseUrl}users`}>User Showcase</a>
             <a
-              href="https://stackoverflow.com/questions/tagged/"
+              href="#"
               target="_blank"
               rel="noreferrer noopener">
-              Stack Overflow
-            </a>
-            <a href="https://discordapp.com/">Project Chat</a>
-            <a
-              href="https://twitter.com/"
-              target="_blank"
-              rel="noreferrer noopener">
-              Twitter
+              Official Discord
             </a>
           </div>
           <div>
             <h5>More</h5>
             <a href={`${this.props.config.baseUrl}blog`}>Blog</a>
-            <a href="https://github.com/">GitHub</a>
+            <a href="https://github.com/MagnusDot/MegaBot">GitHub</a>
             <a
               className="github-button"
               href={this.props.config.repoUrl}
@@ -95,18 +88,6 @@ class Footer extends React.Component {
           </div>
         </section>
 
-        <a
-          href="https://opensource.facebook.com/"
-          target="_blank"
-          rel="noreferrer noopener"
-          className="fbOpenSource">
-          <img
-            src={`${this.props.config.baseUrl}img/oss_logo.png`}
-            alt="Facebook Open Source"
-            width="170"
-            height="45"
-          />
-        </a>
         <section className="copyright">{this.props.config.copyright}</section>
       </footer>
     );
