@@ -89,8 +89,11 @@ const siteConfig = {
   // Open Graph and Twitter card images.
   ogImage: 'img/jason.png',
   twitterImage: 'img/jason.png',
+  docsSideNavCollapsible: true,
 
- repoUrl: 'https://github.com/MagnusDot/MegaBot',
+   enableUpdateBy: true,
+   enableUpdateTime: true,
+  repoUrl: 'https://github.com/MagnusDot/MegaBot',
 };
 
 module.exports = siteConfig;
