@@ -14,7 +14,7 @@ const users = [
     caption: 'ESGI',
     // You will need to prepend the image path with your baseUrl
     // if it is not '/', like: '/test-site/img/image.jpg'.
-    image: '/img/esgi.jpg',
+    image: '/MegaBot/img/esgi.jpg',
     infoLink: 'https://www.esgi.fr/',
     pinned: true,
   },
@@ -23,7 +23,7 @@ const users = [
 const siteConfig = {
   title: 'MegaBot', // Title for your website.
   tagline: 'A Moderation and fun discord BOT',
-  url: 'https://magnusdot.github.io/MegaBot/', // Your website URL
+  url: 'https://magnusdot.github.io', // Your website URL
   baseUrl: '/MegaBot/', // Base URL for your project */
   projectName: 'MegaBot',
   organizationName: 'magnusdot',
