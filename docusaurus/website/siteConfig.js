@@ -23,22 +23,13 @@ const users = [
 const siteConfig = {
   title: 'MegaBot', // Title for your website.
   tagline: 'A Moderation and fun discord BOT',
-  url: 'https://magnusdot.github.io/', // Your website URL
-  baseUrl: '/', // Base URL for your project */
-  // For github.io type URLs, you would set the url and baseUrl like:
-  //   url: 'https://facebook.github.io',
-  //   baseUrl: '/test-site/',
-
-  // Used for publishing and more
+  url: 'https://magnusdot.github.io', // Your website URL
+  baseUrl: '/MegaBot/', // Base URL for your project */
   projectName: 'MegaBot',
   organizationName: 'magnusdot',
-  // For top-level user or org sites, the organization is still the same.
-  // e.g., for the https://JoelMarcey.github.io site, it would be set like...
-  //   organizationName: 'JoelMarcey'
 
-  // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'doc1', label: 'Docs'},
+    {doc: 'MegaBot', label: 'Docs'},
     {blog: true, label: 'Blog'},
   ],
 
@@ -90,7 +81,7 @@ const siteConfig = {
   ogImage: 'img/jason.png',
   twitterImage: 'img/jason.png',
   docsSideNavCollapsible: true,
-
+  twitterUsername: "Magnus_TheDev",
    enableUpdateBy: true,
    enableUpdateTime: true,
   repoUrl: 'https://github.com/MagnusDot/MegaBot',

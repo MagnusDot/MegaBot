@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://magnusdot.github.io//blog</id>
+    <title>MegaBot Blog</title>
+    <updated>2020-05-10T06:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://magnusdot.github.io//blog"/>
+    <subtitle>The best place to stay up-to-date with the latest MegaBot news and events.</subtitle>
+    <logo>https://magnusdot.github.io//img/jason.png</logo>
+    <rights>Copyright © 2020 Aloïs Marcellin</rights>
+    <entry>
+        <title type="html"><![CDATA[The First Bot website]]></title>
+        <id>https://magnusdot.github.io//blog/2020/05/10/blog-post.html</id>
+        <link href="https://magnusdot.github.io//blog/2020/05/10/blog-post.html"/>
+        <updated>2020-05-10T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<div align="center"> For the first time we have created a website allowing you to follow the news and all the changes related to our bot. </div> <p>We really want to be closer to our community and that's why this blog also exists. Open source for us means making a tool available...</p>]]></summary>
+        <author>
+            <name>Magnus</name>
+            <uri>https://twitter.com/magnus_thedev</uri>
+        </author>
+    </entry>
+</feed>
