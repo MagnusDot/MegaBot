@@ -10,7 +10,7 @@ export class Help extends Command {
 
         let result = [];
         let User = [
-            { name: 'Install the bot ', value: "https://discord.com/api/oauth2/authorize?client_id=746452184777883690&permissions=2147483639&scope=bot" },
+            { name: 'Install the bot ', value: "https://magnusdot.github.io/MegaBot/" },
             { name: '```$help```', value: "You can have this overlay to know how to use this bot !" },
             { name: '```$lvl```', value: "You can get your current server lvl" },
             { name: '```$ping```', value: "Are you lagging ? Or I'am ?" },
