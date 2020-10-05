@@ -2,21 +2,21 @@
 <rss version="2.0">
     <channel>
         <title>MegaBot Blog</title>
-        <link>https://magnusdot.github.io//blog</link>
+        <link>https://magnusdot.github.io/MegaBot//MegaBot/blog</link>
         <description>The best place to stay up-to-date with the latest MegaBot news and events.</description>
         <lastBuildDate>Sun, 10 May 2020 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
             <title>MegaBot Blog</title>
-            <url>https://magnusdot.github.io//img/jason.png</url>
-            <link>https://magnusdot.github.io//blog</link>
+            <url>https://magnusdot.github.io/MegaBot//MegaBot/img/jason.png</url>
+            <link>https://magnusdot.github.io/MegaBot//MegaBot/blog</link>
         </image>
         <copyright>Copyright © 2020 Aloïs Marcellin</copyright>
         <item>
             <title><![CDATA[The First Bot website]]></title>
-            <link>https://magnusdot.github.io//blog/2020/05/10/blog-post.html</link>
-            <guid>https://magnusdot.github.io//blog/2020/05/10/blog-post.html</guid>
+            <link>https://magnusdot.github.io/MegaBot//MegaBot/blog/2020/05/10/blog-post.html</link>
+            <guid>https://magnusdot.github.io/MegaBot//MegaBot/blog/2020/05/10/blog-post.html</guid>
             <pubDate>Sun, 10 May 2020 06:00:00 GMT</pubDate>
             <description><![CDATA[<div align="center"> For the first time we have created a website allowing you to follow the news and all the changes related to our bot. </div> <p>We really want to be closer to our community and that's why this blog also exists. Open source for us means making a tool available...</p>]]></description>
         </item>
