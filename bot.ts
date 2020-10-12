@@ -3,7 +3,7 @@ import * as config from './config';
 import low = require("lowdb");
 import FileSync = require("lowdb/adapters/FileSync");
 
-const bot = new Discord.Client({ partials: Object.values(Discord.Constants.PartialTypes) });
+const bot = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 
 
 const adapter = new FileSync('Database/db.json');
@@ -58,7 +58,6 @@ bot.on('message', message => {
 });
 
 bot.on("messageReactionAdd", async (reaction, user) => {
-    if (reaction.message.partial) await reaction.message.fetch();
     if (user && !user.bot) {
         const reacts = [React]
         reacts.forEach(react => {
@@ -68,7 +67,6 @@ bot.on("messageReactionAdd", async (reaction, user) => {
 });
 
 bot.on("messageReactionRemove", async (reaction, user) => {
-    if (reaction.message.partial) await reaction.message.fetch();
     if (user && !user.bot) {
         const reacts = [DeleteReaction]
         reacts.forEach(react => {
