@@ -43,8 +43,21 @@ export class DeleteReaction extends MessageAct {
                     if (react.emojy == emojy) {
                         let i = reaction.message.guild.roles.cache.find(e => e.name == react.role)
                         try {
-                            reaction.message.guild.member(User).roles.remove(i);
-                            reaction.message.guild.member(User).send(this.Alert(react.role, Discord))
+                            reaction.message.guild.member(User).roles.remove(i).then(T => {
+                                reaction.message.guild.member(User).send(this.Alert(react.role, Discord))
+                            }, e =>{
+                                const Embed = new Discord.MessageEmbed()
+                                    .setColor('#fa0000')
+                                    .setTitle('ERROR')
+                                    .setAuthor('MegaBot', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                                    .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                                    .addFields(
+                                        {name: 'THIS BOT DOESN\'T HAVE THE PERMISSION', value: "place the bot's role above others"},
+                                    )
+                                    .setTimestamp()
+                                    .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
+                                reaction.message.guild.member(User).send(Embed)
+                            })
                         } catch (e) {
                             //missing permission
                             console.log(e)
