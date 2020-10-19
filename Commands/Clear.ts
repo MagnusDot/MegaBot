@@ -11,7 +11,11 @@ export class Clear extends Command {
     const args = message.content.split(" ");
     const number = parseInt(args[1]);
 
-    if (isNaN(number) || number < 1 || number > 100)
+    if (isNaN(number)) {
+      return 'Not a Number!';
+    }
+
+    if (number < 1 || number > 100)
       return message.reply("Please choose a number between 1 and 100");
 
     const messages = await message.channel.messages.fetch({
