@@ -1,4 +1,4 @@
-import {Command} from '../Class/command';
+import { Command } from "../Class/command";
 
 export class Clear extends Command {
   static match(message) {
@@ -11,39 +11,94 @@ export class Clear extends Command {
     const args = message.content.split(" ");
     const number = parseInt(args[1]);
 
-    if (isNaN(number) || number < 1 || number > 100)  {
-      this.howToClear(message, Discord);
-      return;
-  }
+    if (isNaN(number)) {
+      const user = message.mentions.users.first();
+      if (user === undefined) {
+        this.howToClearSomeone(message, Discord);
+        return;
+      }
 
-    const messages = await message.channel.messages.fetch({
-      limit: Math.min(number, 100),
-      before: message.id,
-    });
+      const messages = await message.channel.messages.fetch({
+        before: message.id,
+        Author: user.id,
+      });
 
-    await message.channel.bulkDelete(messages);
+      messages.forEach(async (msg) =>{
+        if(msg.author.id === user.id) await msg.delete();
+     })
+
+    } else {
+      if (number < 1 || number > 100) {
+        this.howToClearNumber(message, Discord);
+        return;
+      }
+
+      const messages = await message.channel.messages.fetch({
+        limit: Math.min(number, 100),
+        before: message.id,
+      });
+
+      await message.channel.bulkDelete(messages);
+    }
+
+    await message.delete();
 
     const msg = await message.channel
-      .send(`${number} message(s) has been deleted.`)
+      .send(`Message(s) have been deleted successfully.`)
       .then((msg) => {
-        msg.delete({ timeout: 10000 });
+        msg.delete({ timeout: 5000 });
       });
   }
 
-  static howToClear(message, Discord) {
+  static howToClearNumber(message, Discord) {
     const Embed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle('How many messages do you want to delete?')
-        .setAuthor('Mute', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
-        .setDescription('Choose a number')
-        .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
-        .addFields(
-            {name: 'How many ?', value: "The command work like that : $clear 1~100 "},
-        )
-        .setTimestamp()
-        .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
+      .setColor("#0099ff")
+      .setTitle("How many messages do you want to delete?")
+      .setAuthor(
+        "Mute",
+        "https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png"
+      )
+      .setDescription("Choose a number")
+      .setThumbnail(
+        "https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png"
+      )
+      .addFields({
+        name: "How many ?",
+        value: "The command work like that : $clear 1~100 ",
+      })
+      .setTimestamp()
+      .setFooter(
+        "See you soon !",
+        "https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png"
+      );
 
     message.channel.send(Embed);
-    return
-}
+    return;
+  }
+
+  static howToClearSomeone(message, Discord) {
+    const Embed = new Discord.MessageEmbed()
+      .setColor("#0099ff")
+      .setTitle("Who do you want to delete messages from?")
+      .setAuthor(
+        "Mute",
+        "https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png"
+      )
+      .setDescription("You need to know how")
+      .setThumbnail(
+        "https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png"
+      )
+      .addFields({
+        name: "How ?",
+        value: "The command work like that : $clear @user ",
+      })
+      .setTimestamp()
+      .setFooter(
+        "See you soon !",
+        "https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png"
+      );
+
+    message.channel.send(Embed);
+    return;
+  }
 }
