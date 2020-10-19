@@ -1,7 +1,6 @@
 import { Command } from "../Class/command";
 
 export class Clear extends Command {
-
   static match(message) {
     return message.content.startsWith("$clear");
   }
@@ -9,10 +8,10 @@ export class Clear extends Command {
   static async action(message, Discord, bot) {
     if (!message.member.hasPermission("ADMINISTRATOR")) return;
 
-    const args = message.content.split(' ');
+    const args = message.content.split(" ");
     const number = parseInt(args[1]);
 
-    if (isNaN(number) ||number < 1 || number > 100)
+    if (isNaN(number) || number < 1 || number > 100)
       return message.reply("Please choose a number between 1 and 100");
 
     const messages = await message.channel.messages.fetch({
@@ -22,13 +21,10 @@ export class Clear extends Command {
 
     await message.channel.bulkDelete(messages);
 
-    const msg = await message.channel.send(
-      `${number} message(s) has been deleted.`
-    );
-
-    setTimeout(() => {
-      message.delete();
-      msg.delete();
-    }, 2000);
+    const msg = await message.channel
+      .send(`${number} message(s) has been deleted.`)
+      .then((msg) => {
+        msg.delete({ timeout: 10000 });
+      });
   }
 }
