@@ -1,4 +1,4 @@
-import { Command } from "../Class/command";
+import {Command} from '../Class/command';
 
 export class Clear extends Command {
   static match(message) {
@@ -11,12 +11,10 @@ export class Clear extends Command {
     const args = message.content.split(" ");
     const number = parseInt(args[1]);
 
-    if (isNaN(number)) {
-      return 'Not a Number!';
-    }
-
-    if (number < 1 || number > 100)
-      return message.reply("Please choose a number between 1 and 100");
+    if (isNaN(number) || number < 1 || number > 100)  {
+      this.howToClear(message, Discord);
+      return;
+  }
 
     const messages = await message.channel.messages.fetch({
       limit: Math.min(number, 100),
@@ -31,4 +29,21 @@ export class Clear extends Command {
         msg.delete({ timeout: 10000 });
       });
   }
+
+  static howToClear(message, Discord) {
+    const Embed = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle('How many messages do you want to delete?')
+        .setAuthor('Mute', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+        .setDescription('Choose a number')
+        .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+        .addFields(
+            {name: 'How many ?', value: "The command work like that : $clear 1~100 "},
+        )
+        .setTimestamp()
+        .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
+
+    message.channel.send(Embed);
+    return
+}
 }
