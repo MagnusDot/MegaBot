@@ -22,6 +22,7 @@ export class Help extends Command {
             { name: "ADMINISTRATOR COMMAND", value: '__________________________' },
             { name: '```$mute```', value: "\n mute the one you want ! \n ```$mute @user 1d \"insult\"``` " },
             { name: '```$unmute```', value: "\n unmute the one you want ! \n ```$unmute @user``` " },
+            { name: '```$clear```', value: "\n how many messages do you want to delete ! \n ```$clear 50``` " },
             { name: '```$addRole```', value: "\n Add an emojy => role to a specific message ! \n ```$addRole messageidToReact Emojy @role``` " },
             { name: '```$deleteRole```', value: "```$deleteRole messageidToReact Emojy```" },
             { name: '```$rolelist```', value: "This is a list of every role reaction" },
