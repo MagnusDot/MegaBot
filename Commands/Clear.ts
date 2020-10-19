@@ -13,7 +13,7 @@ export class Clear extends Command {
     const number = parseInt(args[1]);
 
     if (isNaN(number) ||number < 1 || number > 100)
-      return message.reply("il faut choisir un nombre entre 1 et 100");
+      return message.reply("Please choose a number between 1 and 100");
 
     const messages = await message.channel.messages.fetch({
       limit: Math.min(number, 100),
@@ -23,7 +23,7 @@ export class Clear extends Command {
     await message.channel.bulkDelete(messages);
 
     const msg = await message.channel.send(
-      `${number} message(s) ont été supprimé(s).`
+      `${number} message(s) has been deleted.`
     );
 
     setTimeout(() => {
