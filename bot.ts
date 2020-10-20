@@ -21,8 +21,11 @@ const Configdb = low(Configadapter);
 Configdb.defaults({ server: [] })
     .write();
 
-import { ping } from "./Commands/ping"
-import { Users } from "./Commands/Users"
+import { ping } from "./Commands/ping";
+import { Users } from "./Commands/Users";
+import { Forbid } from "./Commands/Forbid";
+import { Unforbid } from "./Commands/Unforbid";
+import { Listforbid } from "./Commands/Listforbid";
 import { Mute } from "./Commands/Mute";
 import { Help } from "./Commands/Help";
 import { AddRole } from "./Commands/React/AddRole";
@@ -51,10 +54,30 @@ bot.on('ready', () => {
 
 bot.on('message', message => {
     if (message.channel.type !== 'dm') {
-        const commands = [ping, Users, Xp, Mute, Help, AddRole, Poll, Clear, ListRole, DeleteRole, Unmute, GetLevel, Server, Config]
-        commands.forEach(Command => {
+        const commands = [ping, Users, Xp, Mute, Help, AddRole, Poll, ListRole, DeleteRole, Unmute, GetLevel, Server, Clear, Config, Forbid, Listforbid, Unforbid]
+        for (let Command of commands) {
             Command.parse(message, Discord, bot);
-        })
+        }
+
+        //Check if a forbidden word is mentionned in this message
+
+        if (!message.content.startsWith("$") && !message.author.bot) {
+            const Configadapter = new FileSync('Database/serverConfig.json');
+            const Configdb = low(Configadapter);
+
+            const server = Configdb.get('server')
+                .find({id: message.guild.id}).value();
+            let forbiddenWords = [];
+            if (typeof (server.forbiddenWords) != "undefined") {
+                forbiddenWords = server.forbiddenWords;
+            }
+            for (let word of forbiddenWords) {
+                if (message.content.toLowerCase().replace(word.toLowerCase(), "") != message.content.toLowerCase()) {
+                    message.delete();
+                    return;
+                }
+            }
+        }
     }
 });
 
