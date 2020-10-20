@@ -24,6 +24,9 @@ Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&
   #### ADMINISTRATOR COMMAND
   - Mute user : ```$mute 1d @user``` ( mute user during one day )
   - Unmute User : ```$unmute @user``` ( unmute the user)
+  - Forbid word(s) : ```$forbid word1 word2``` (forbid one or any words)
+  - Unforbid word(s) : ```$unforbid word1 word2``` (unforbid one or any words)
+  - Listforbid word(s) : ```$listforbid word1 word2``` (Show all forbidden words)
   - Add React emojy then Role : ```$addRole messageidToReact Emojy @role``` ( init bot reaction when the emojy is fired )
   - Delete Role : ```$deleteRole messageidToReact Emojy```
   - role List : ```$rolelist``` This is a list of every role reaction
