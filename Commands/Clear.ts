@@ -20,7 +20,6 @@ export class Clear extends Command {
 
       const messages = await message.channel.messages.fetch({
         before: message.id,
-        Author: user.id,
       });
 
       messages.forEach(async (msg) =>{
