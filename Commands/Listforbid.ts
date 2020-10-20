@@ -1,4 +1,5 @@
 import {Command} from '../Class/command';
+import Functions from '../Class/Functions';
 import low = require("lowdb");
 import FileSync = require("lowdb/adapters/FileSync");
 
@@ -25,7 +26,7 @@ export class Listforbid extends Command {
         const Embed = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle('List off all forbidden words')
-            .setDescription('Words  => ' + this.displayWords(forbiddenWords), 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+            .setDescription('Words  => ' + Functions.displayWords(forbiddenWords), 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
             .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
             .setTimestamp()
             .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
