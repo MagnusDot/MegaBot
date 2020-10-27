@@ -33,6 +33,7 @@ import { AddRole } from "./Commands/React/AddRole";
 import { React } from "./Commands/React/React";
 import { DeleteReaction } from "./Commands/React/DeleteReaction";
 import { Poll } from "./Commands/Poll";
+import { Clear } from "./Commands/Clear";
 import { ListRole } from "./Commands/React/ListRole";
 import { DeleteRole } from "./Commands/React/DeleteRole";
 import { Unmute } from "./Commands/Unmute";
@@ -54,7 +55,7 @@ bot.on('ready', () => {
 
 bot.on('message', message => {
     if (message.channel.type !== 'dm') {
-        const commands = [ping, Users, Xp, Mute, Help, AddRole, Poll, ListRole, DeleteRole, Unmute, GetLevel, Server, Config, Forbid, Listforbid, Unforbid, CheckForbidded]
+        const commands = [ping, Users, Xp, Mute, Help, AddRole, Poll, Clear, ListRole, DeleteRole, Unmute, GetLevel, Server, Config, Forbid, Listforbid, Unforbid, CheckForbidded]
         commands.forEach(Command => {
             Command.parse(message, Discord, bot);
         });

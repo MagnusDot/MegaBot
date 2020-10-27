@@ -27,6 +27,7 @@ Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&
   - Forbid word(s) : ```$forbid word1 word2``` (forbid one or any words)
   - Unforbid word(s) : ```$unforbid word1 word2``` (unforbid one or any words)
   - Listforbid word(s) : ```$listforbid word1 word2``` (Show all forbidden words)
+  - Clear : ```$clear 50``` (delete last 50 messages) or ```$clear @user``` (delete this user's messages from the last 100 messages)
   - Add React emojy then Role : ```$addRole messageidToReact Emojy @role``` ( init bot reaction when the emojy is fired )
   - Delete Role : ```$deleteRole messageidToReact Emojy```
   - role List : ```$rolelist``` This is a list of every role reaction
