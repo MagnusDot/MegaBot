@@ -7,7 +7,7 @@ export class Clear extends Command {
     }
 
     static async action(message, Discord, bot) {
-        if (!message.member.hasPermission("MANAGE_MESSAGES")) return;
+        if (!message.member.hasPermission("ADMINISTRATOR")) return;
 
         const args = message.content.split(" ");
         const number = parseInt(args[1]);
