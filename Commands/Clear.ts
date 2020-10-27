@@ -1,4 +1,5 @@
 import {Command} from "../Class/command";
+import {log} from "util";
 
 export class Clear extends Command {
     static match(message) {
@@ -18,13 +19,30 @@ export class Clear extends Command {
                 return;
             }
 
+            let startDate = new Date();
+
+
             const messages = await message.channel.messages.fetch({
+                limit: 50,
                 before: message.id,
-            });
+            })
 
             messages.forEach(async (msg) => {
-                if (msg.author.id === user.id) await msg.delete();
+                if (msg.author.id === user.id){
+                    await msg.delete()
+                }
             })
+
+           await message.delete()
+
+            let endDate   = new Date();
+            let seconds = (endDate.getTime() - startDate.getTime()) / 1000;
+
+            const msg = await message.channel
+                .send(`Message(s) have been deleted successfully. It took : ${seconds} seconds`)
+                .then((msg) => {
+                    msg.delete({timeout: 2000});
+                });
 
         } else {
             if (number < 1 || number > 100) {
@@ -32,12 +50,15 @@ export class Clear extends Command {
                 return;
             }
 
+            let startDate = new Date();
+
             const messages = await message.channel.messages.fetch({
                 limit: Math.min(number, 100),
                 before: message.id,
             });
 
-            await message.channel.bulkDelete(messages).catch(e =>{
+            await message.channel.bulkDelete(messages).catch(e => {
+
                 const Embed = new Discord.MessageEmbed()
                     .setColor("#0099ff")
                     .setTitle("Error")
@@ -45,7 +66,7 @@ export class Clear extends Command {
                         "MegaBot",
                         "https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png"
                     )
-                    .setDescription("Choose a number")
+                    .setDescription("Help")
                     .setThumbnail(
                         "https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png"
                     )
@@ -61,15 +82,20 @@ export class Clear extends Command {
 
                 message.channel.send(Embed);
             });
+
+
+
+            message.delete();
+
+            let endDate   = new Date();
+            let seconds = (endDate.getTime() - startDate.getTime()) / 1000;
+
+            const msg = await message.channel
+                .send(`Message(s) have been deleted successfully. It took : ${seconds} seconds`)
+                .then((msg) => {
+                    msg.delete({timeout: 5000});
+                });
         }
-
-        await message.delete();
-
-        const msg = await message.channel
-            .send(`Message(s) have been deleted successfully.`)
-            .then((msg) => {
-                msg.delete({timeout: 5000});
-            });
     }
 
     static howToClear(message, Discord) {
