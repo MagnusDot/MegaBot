@@ -21,8 +21,12 @@ const Configdb = low(Configadapter);
 Configdb.defaults({ server: [] })
     .write();
 
-import { ping } from "./Commands/ping"
-import { Users } from "./Commands/Users"
+import { ping } from "./Commands/ping";
+import { Users } from "./Commands/Users";
+import { Forbid } from "./Commands/Forbid";
+import { Unforbid } from "./Commands/Unforbid";
+import { Listforbid } from "./Commands/Listforbid";
+import { CheckForbidded } from "./Commands/CheckForbidded";
 import { Mute } from "./Commands/Mute";
 import { Help } from "./Commands/Help";
 import { AddRole } from "./Commands/React/AddRole";
@@ -51,10 +55,10 @@ bot.on('ready', () => {
 
 bot.on('message', message => {
     if (message.channel.type !== 'dm') {
-        const commands = [ping, Users, Xp, Mute, Help, AddRole, Poll, Clear, ListRole, DeleteRole, Unmute, GetLevel, Server, Config]
+        const commands = [ping, Users, Xp, Mute, Help, AddRole, Poll, Clear, ListRole, DeleteRole, Unmute, GetLevel, Server, Config, Forbid, Listforbid, Unforbid, CheckForbidded]
         commands.forEach(Command => {
             Command.parse(message, Discord, bot);
-        })
+        });
     }
 });
 
