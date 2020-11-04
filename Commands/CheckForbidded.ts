@@ -15,7 +15,7 @@ export class CheckForbidded extends Command {
         const server = Configdb.get('server')
             .find({ id: message.guild.id }).value();
         let forbiddenWords = [];
-        if (typeof (server.forbiddenWords) != "undefined" || server.forbiddenWords.length > 0) {
+        if (typeof (server.forbiddenWords) != "undefined" && server.forbiddenWords.length > 0) {
             forbiddenWords = server.forbiddenWords;
             for (let word of forbiddenWords) {
                 if (message.content.toLowerCase().replace(word.toLowerCase(), "") != message.content.toLowerCase()) {
