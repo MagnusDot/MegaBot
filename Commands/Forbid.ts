@@ -67,7 +67,7 @@ export class Forbid extends Command {
         const Embed = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle('The word(s) has been forbidden')
-            .setAuthor('Fobidded  => ' + displayWords(args), 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+            .setAuthor('Fobidded  => ' + displayWords(toforbid), 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
             .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
             .setTimestamp()
             .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
