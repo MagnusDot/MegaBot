@@ -55,7 +55,7 @@ bot.on('ready', () => {
 
 bot.on('message', message => {
     if (message.channel.type !== 'dm') {
-        const commands = [CheckForbidded, ping, Users, Xp, Mute, Clear, Help, AddRole, Poll, ListRole, DeleteRole, Unmute, GetLevel, Server, Config, Forbid, Listforbid, Unforbid]
+        const commands = [ping, Users, Xp, Mute, Help, AddRole, Poll, Clear, ListRole, DeleteRole, Unmute, GetLevel, Server, Config, Forbid, Listforbid, Unforbid, CheckForbidded]
         commands.forEach(Command => {
             Command.parse(message, Discord, bot);
         });
