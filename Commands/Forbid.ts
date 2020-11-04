@@ -96,7 +96,7 @@ export class Forbid extends Command {
             .setDescription("You need to choose a word ")
             .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
             .addFields(
-                { name: 'How ?', value: "The command work like that : $forbid The word(s) to forbid " },
+                { name: 'How ?', value: 'The command work like that : $forbid "words,to,forbid"' },
             )
             .setTimestamp()
             .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
