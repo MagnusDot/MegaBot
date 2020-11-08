@@ -28,7 +28,7 @@ export class Help extends Command {
             { name: '```$rolelist```', value: "This is a list of every role reaction" },
             { name: '```$forbid```', value: '\n Forbid a word on your server ! \n ```$forbid "words,to,forbid"``` ' },
             { name: '```$unforbid```', value: 'Unforbid a word on your server ! : ```$unforbid "words,to,unforbid"``` ' },
-            { name: '```$listforbid```', value: 'Get the list of you\'re forbidden words ! : ```$listforbid"``` ' },
+            { name: '```$listforbid```', value: 'Get the list of you\'re forbidden words ! : ```$listforbid``` ' },
             { name: "\n CONFIG COMMAND", value: '__________________________' },
             { name: '```$config lvl```', value: "\n Enable / Disable lvl update \n ```$config lvl (true|false) ```" }];
 
