@@ -1,4 +1,4 @@
-import {Command} from '../Class/command';
+import { Command } from '../Class/command';
 import low = require("lowdb");
 import FileSync = require("lowdb/adapters/FileSync");
 
@@ -9,17 +9,56 @@ export class Unmute extends Command {
         return message.content.startsWith('$unmute')
     }
 
-    static action(message, Discord, bot) {
+    static async action(message, Discord) {
         if (!message.member.hasPermission('ADMINISTRATOR')) return;
+        const args = message.content.slice(5).trim().split(' ');        
+        if (args.length <= 1) {
+            return;
+        }
         const user = message.mentions.users.first();
         const userId: string = message.guild.id + "_" + user.id;
         const adapter = new FileSync('Database/db.json');
         const db = low(adapter);
 
+
+        let role = message.guild.roles.cache.find(r => r.name === "Muted")
+        if (!role) {
+            try {
+                role = await message.guild.roles.create({
+                    data: {
+                        name: "Muted",
+                        color: "#000000",
+                        permissions: []
+                    }
+                });
+
+                message.guild.channels.cache.forEach(async (channel) => {
+                    if (channel.type === "text") {
+                        await channel.overwritePermissions([
+                            {
+                                id: role.id,
+                                deny: ['SEND_MESSAGES', 'ADD_REACTIONS']
+                            }
+                        ]
+                        );
+                    }
+
+                });
+            } catch (e) {
+                console.log(e.stack)
+            }
+        }
+        let ObjectUser = message.guild.members.cache.get(user.id);
+
+        if (!ObjectUser.roles.cache.has(role.id)) return message.author.send('This user is not muted');
+
         db.get('user')
-            .find({id: userId})
-            .assign({muted: {}})
+            .find({ id: userId })
+            .assign({ muted: {} })
             .write();
+
+        ObjectUser.roles.remove(role)
+        ObjectUser.send("You've been Unmuted")
 
         const Embed = new Discord.MessageEmbed()
             .setColor('#0099ff')
