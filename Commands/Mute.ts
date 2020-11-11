@@ -2,7 +2,6 @@ import { Command } from '../Class/command';
 import low = require("lowdb");
 import FileSync = require("lowdb/adapters/FileSync");
 import ms = require("ms");
-import { User } from 'discord.js';
 
 export class Mute extends Command {
 
@@ -87,7 +86,7 @@ export class Mute extends Command {
 
 
         if (user.roles.cache.has(role.id)) return message.author.send('This user is already muted');
-
+        let date = new Date;
         if (UserDb === undefined) {
             db.get('user').push({
                 id: userId,
@@ -96,7 +95,9 @@ export class Mute extends Command {
                 warn: 0,
                 muted: {
                     "reason": reason,
-                    "muted": true
+                    "muted": true,
+                    "time" : Usertime,
+                    "date" : date.getTime()
                 }
             }).write();
             await (user.roles.add(role)).then(() => {
@@ -114,7 +115,9 @@ export class Mute extends Command {
                 .assign({
                     muted: {
                         "reason": reason,
-                        "muted": true
+                        "muted": true,
+                        "time" : Usertime,
+                        "date" : date.getTime()
                     }
                 })
                 .write();
