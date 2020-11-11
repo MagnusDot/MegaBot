@@ -16,7 +16,7 @@ export class Mute extends Command {
             this.howToMute(message, Discord);
             return;
         }
-        
+
         /* find Role muted  */
 
         let role = message.guild.roles.cache.find(r => r.name === "Muted");
@@ -72,11 +72,11 @@ export class Mute extends Command {
         } else {
             reason = reason[1]
         }
-    
+
         /* get Time user muted */
 
         const Usertime = ms(args[1]);
-        
+
         if (Usertime === undefined) {
             this.howToMute(message, Discord);
             return;
@@ -96,19 +96,36 @@ export class Mute extends Command {
                 muted: {
                     "reason": reason,
                     "muted": true,
-                    "time" : Usertime,
-                    "date" : date.getTime()
+                    "time": Usertime,
+                    "date": date.getTime()
                 }
             }).write();
+            let error: Boolean = false;
             await (user.roles.add(role)).then(() => {
                 setTimeout(function () {
                     user.roles.remove(role)
                     user.send("You've been Unmuted")
                 }, Usertime)
+            }, e => {
+                error = true;
+                const Embed = new Discord.MessageEmbed()
+                    .setColor('#fa0000')
+                    .setTitle('ERROR')
+                    .setAuthor('MegaBot', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                    .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                    .addFields(
+                        { name: 'THIS BOT DOESN\'T HAVE THE PERMISSION', value: "place the bot's role above others" },
+                    )
+                    .setTimestamp()
+                    .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
+                message.channel.send(Embed)
             });
-            user.send(this.Muted(message, Discord, mentions, Usertime, "You've been muted", reason))
+            if (!error) {
+                user.send(this.Muted(message, Discord, mentions, Usertime, "You've been muted", reason))
 
-            message.channel.send(this.Muted(message, Discord, mentions, Usertime, "The user has been muted ! ", reason))
+                message.channel.send(this.Muted(message, Discord, mentions, Usertime, "The user has been muted ! ", reason))
+            }
+
         } else {
             db.get('user')
                 .find({ id: userId })
@@ -116,21 +133,38 @@ export class Mute extends Command {
                     muted: {
                         "reason": reason,
                         "muted": true,
-                        "time" : Usertime,
-                        "date" : date.getTime()
+                        "time": Usertime,
+                        "date": date.getTime()
                     }
                 })
                 .write();
+            let error: Boolean = false;
+
             await (user.roles.add(role)).then(() => {
                 setTimeout(function () {
                     user.roles.remove(role)
                     user.send("You've been Unmuted")
                 }, Usertime)
+            }, e => {
+                error = true;
+                const Embed = new Discord.MessageEmbed()
+                    .setColor('#fa0000')
+                    .setTitle('ERROR')
+                    .setAuthor('MegaBot', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                    .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                    .addFields(
+                        { name: 'THIS BOT DOESN\'T HAVE THE PERMISSION', value: "place the bot's role above others" },
+                    )
+                    .setTimestamp()
+                    .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
+                message.channel.send(Embed)
             });
 
-            user.send(this.Muted(message, Discord, mentions, Usertime, "You've been muted", reason))
+            if (!error) {
+                user.send(this.Muted(message, Discord, mentions, Usertime, "You've been muted", reason))
 
-            message.channel.send(this.Muted(message, Discord, mentions, Usertime, "The user has been muted ! ", reason))
+                message.channel.send(this.Muted(message, Discord, mentions, Usertime, "The user has been muted ! ", reason))
+            }
         }
         message.delete();
     }
