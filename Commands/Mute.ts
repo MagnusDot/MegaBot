@@ -1,6 +1,7 @@
-import {Command} from '../Class/command';
+import { Command } from '../Class/command';
 import low = require("lowdb");
 import FileSync = require("lowdb/adapters/FileSync");
+import ms = require("ms");
 
 export class Mute extends Command {
 
@@ -8,30 +9,62 @@ export class Mute extends Command {
         return message.content.startsWith('$mute')
     }
 
-    static action(message, Discord, bot) {
+    static async action(message, Discord, bot) {
         if (!message.member.hasPermission('ADMINISTRATOR')) return;
         const args = message.content.slice(5).trim().split(' ');
-        if (args[0] === '') {
+        if (args.length < 2) {
+            this.howToMute(message, Discord);
+            return;
+        }
+        
+        /* find Role muted  */
+
+        let role = message.guild.roles.cache.find(r => r.name === "Muted");
+        if (!role) {
+            try {
+                role = await message.guild.roles.create({
+                    data: {
+                        name: "Muted",
+                        color: "#000000",
+                        permissions: []
+                    }
+                });
+
+                message.guild.channels.cache.forEach(async (channel) => {
+                    if (channel.type === "text") {
+                        await channel.overwritePermissions([
+                            {
+                                id: role.id,
+                                deny: ['SEND_MESSAGES', 'ADD_REACTIONS']
+                            }
+                        ]
+                        );
+                    }
+
+                });
+            } catch (e) {
+                console.log(e.stack)
+            }
+        }
+
+
+        /* find the user mention  */
+        const mentions = message.mentions.users.first();
+        if (mentions === undefined) {
             this.howToMute(message, Discord);
             return;
         }
 
-
-        const user = message.mentions.users.first();
-        if (user === undefined) {
-            this.howToMute(message, Discord);
-            return;
-        }
-        const userId: string = message.guild.id + "_" + user.id;
+        /* Open database and find User mentionned */
+        const userId: string = message.guild.id + "_" + mentions.id;
         const adapter = new FileSync('Database/db.json');
         const db = low(adapter);
 
 
         let UserDb = db.get('user')
-            .find({id: userId})
+            .find({ id: userId })
             .value();
-
-        let time: string = args[1];
+        /* Get reason of ban */
         let reason = message.content.match(/"([^"]+)"/);
 
         if (reason === null) {
@@ -39,24 +72,21 @@ export class Mute extends Command {
         } else {
             reason = reason[1]
         }
+    
+        /* get Time user muted */
 
-        const Usertime = args[1];
-        const TimeVariation: string = Usertime[Usertime.length - 1];
-        let timeDuration = Usertime.substring(0, Usertime.length - 1);
-        timeDuration = parseInt(timeDuration);
-
-        if (isNaN(timeDuration)) {
+        const Usertime = ms(args[1]);
+        
+        if (Usertime === undefined) {
             this.howToMute(message, Discord);
             return;
         }
 
-        const finalBan = this.dateAdd(new Date, TimeVariation, timeDuration).getTime();
+        let user = message.guild.members.cache.get(mentions.id);
 
-        if (finalBan === undefined) {
-            this.howToMute(message, Discord);
-            return;
-        }
 
+        if (user.roles.cache.has(role.id)) return message.author.send('This user is already muted');
+        let date = new Date;
         if (UserDb === undefined) {
             db.get('user').push({
                 id: userId,
@@ -64,44 +94,45 @@ export class Mute extends Command {
                 title: message.author.username,
                 warn: 0,
                 muted: {
-                    "until": finalBan,
                     "reason": reason,
-                    "administrator": message.author.username,
-                    "explained": 0
+                    "muted": true,
+                    "time" : Usertime,
+                    "date" : date.getTime()
                 }
             }).write();
-            const Embed = new Discord.MessageEmbed()
-                .setColor('#0099ff')
-                .setTitle('The user has been muted ! ')
-                .setAuthor('Muted  => ' + user.username, 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
-                .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
-                .setTimestamp()
-                .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
+            await (user.roles.add(role)).then(() => {
+                setTimeout(function () {
+                    user.roles.remove(role)
+                    user.send("You've been Unmuted")
+                }, Usertime)
+            });
+            user.send(this.Muted(message, Discord, mentions, Usertime, "You've been muted", reason))
 
-            message.channel.send(Embed);
+            message.channel.send(this.Muted(message, Discord, mentions, Usertime, "The user has been muted ! ", reason))
         } else {
             db.get('user')
-                .find({id: userId})
+                .find({ id: userId })
                 .assign({
                     muted: {
-                        "until": finalBan,
                         "reason": reason,
-                        "administrator": message.author.username,
-                        "explained": 0
+                        "muted": true,
+                        "time" : Usertime,
+                        "date" : date.getTime()
                     }
                 })
                 .write();
+            await (user.roles.add(role)).then(() => {
+                setTimeout(function () {
+                    user.roles.remove(role)
+                    user.send("You've been Unmuted")
+                }, Usertime)
+            });
 
-            const Embed = new Discord.MessageEmbed()
-                .setColor('#0099ff')
-                .setTitle('The user has been muted ! ')
-                .setAuthor('Muted  => ' + user.username, 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
-                .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
-                .setTimestamp()
-                .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
+            user.send(this.Muted(message, Discord, mentions, Usertime, "You've been muted", reason))
 
-            message.channel.send(Embed);
+            message.channel.send(this.Muted(message, Discord, mentions, Usertime, "The user has been muted ! ", reason))
         }
+        message.delete();
     }
 
     static howToMute(message, Discord) {
@@ -112,7 +143,7 @@ export class Mute extends Command {
             .setDescription('You need to know how to mute')
             .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
             .addFields(
-                {name: 'How ?', value: "The command work like that : $mute @user 1d \"insult\" "},
+                { name: 'How ?', value: "The command work like that : $mute @user 1d \"insult\" " },
             )
             .setTimestamp()
             .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
@@ -121,45 +152,18 @@ export class Mute extends Command {
         return
     }
 
-    static dateAdd(date, interval, units) {
-        if (!(date instanceof Date))
-            return undefined;
-        var ret = date; //don't change original date
-        var checkRollover = function () {
-            if (ret.getDate() != date.getDate()) ret.setDate(0);
-        };
-        switch (String(interval).toLowerCase()) {
-            case 'y':
-                ret.setFullYear(ret.getFullYear() + units);
-                checkRollover();
-                break;
-            case 'q':
-                ret.setMonth(ret.getMonth() + 3 * units);
-                checkRollover();
-                break;
-            case 'mo':
-                ret.setMonth(ret.getMonth() + units);
-                checkRollover();
-                break;
-            case 'w':
-                ret.setDate(ret.getDate() + 7 * units);
-                break;
-            case 'd':
-                ret.setDate(ret.getDate() + units);
-                break;
-            case 'h':
-                ret.setTime(ret.getTime() + units * 3600000);
-                break;
-            case 'm':
-                ret.setTime(ret.getTime() + units * 60000);
-                break;
-            case 's':
-                ret.setTime(ret.getTime() + units * 1000);
-                break;
-            default:
-                ret = undefined;
-                break;
-        }
-        return ret;
+    static Muted(message, Discord, mentions, duration, title, reason) {
+        const Embed = new Discord.MessageEmbed()
+            .setColor('#0099ff')
+            .setTitle(title)
+            .setAuthor('Mute', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+            .setDescription('Muted  => ' + mentions.username + '\n During => ' + ms(duration, { long: true }) + '\n Reason => ' + reason, 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+            .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+            .setTimestamp()
+            .setFooter('See you soon !', 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png');
+
+        return Embed;
     }
+
+
 }
