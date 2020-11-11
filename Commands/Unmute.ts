@@ -34,12 +34,11 @@ export class Unmute extends Command {
 
                 message.guild.channels.cache.forEach(async (channel) => {
                     if (channel.type === "text") {
-                        await channel.overwritePermissions([
+                        await channel.updateOverwrite(role.id, 
                             {
-                                id: role.id,
-                                deny: ['SEND_MESSAGES', 'ADD_REACTIONS']
+                                SEND_MESSAGES: false,
+                                ADD_REACTIONS: false
                             }
-                        ]
                         );
                     }
 
