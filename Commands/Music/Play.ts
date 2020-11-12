@@ -25,9 +25,13 @@ export class play extends Command {
             );
         const permissions = voiceChannel.permissionsFor(message.client.user);
         if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
-            return message.channel.send(
-                "I need the permissions to join and speak in your voice channel!"
-            );
+            const Embed = new Discord.MessageEmbed()
+            .setColor('#0099ff')
+            .setTitle('I need Persmission')
+            .setDescription(`I need the permissions to join and speak in your voice channel!`)
+            .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+            .setTimestamp()
+            return message.channel.send(Embed);
         }
 
         const songInfo = await search(args, opts);
@@ -35,7 +39,10 @@ export class play extends Command {
         const song = {
             title: songInfo.results[0].title,
             url: songInfo.results[0].link,
-            user: message.author.username
+            user: {
+                username: message.author.username,
+                id: message.author.id
+            }
         };
 
         if (!serverQueue) {
@@ -63,7 +70,11 @@ export class play extends Command {
             }
         } else {
             serverQueue.songs.push(song);
-            return message.channel.send(`${song.title} has been added to the queue!`);
+            const Embed = new Discord.MessageEmbed()
+            .setColor('#0099ff')
+            .setDescription(`Queued  [${song.title}](${song.url}) [<@${song.user.id}>]`)
+            .setTimestamp()
+            return message.channel.send(Embed);
         }
 
     }
@@ -74,11 +85,11 @@ export class play extends Command {
         if (!song) {
             
             const Embed = new Discord.MessageEmbed()
-                .setColor('#0099ff')
-                .setTitle(`No Song to play, I will leave the channel`)
-                .setAuthor(``, 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
-                .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
-                .setTimestamp()
+            .setColor('#0099ff')
+            .setTitle('No song')
+            .setDescription(`I will be Disconnected`)
+            .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+            .setTimestamp()
             serverQueue.textChannel.send(Embed).then((msg) => {
                 msg.delete({ timeout: 5000 });
                 serverQueue.voiceChannel.leave();
@@ -98,8 +109,8 @@ export class play extends Command {
 
         const Embed = new Discord.MessageEmbed()
             .setColor('#0099ff')
-            .setTitle(`New Song : **${song.title}** played by ${song.user}`)
-            .setAuthor(``, 'https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+            .setTitle('Now playing')
+            .setDescription(`[${song.title}](${song.url}) [<@${song.user.id}>]`)
             .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
             .setTimestamp()
         serverQueue.textChannel.send(Embed);
