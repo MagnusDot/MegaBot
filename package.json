@@ -15,7 +15,8 @@
     "pm2": "^4.4.1",
     "typescript": "^3.9.7",
     "youtube-audio-stream": "^0.2.0",
-    "youtube-search": "^1.1.1"
+    "youtube-search": "^1.1.4",
+    "ytdl-core": "^4.0.3"
   },
   "devDependencies": {
     "tsc-watch": "^4.2.9"
