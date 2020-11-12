@@ -16,6 +16,10 @@ export class Help extends Command {
             { name: '```$ping```', value: "Are you lagging ? Or I'am ?" },
             { name: '```$poll```', value: "\n Create a poll for everyone  \n ```$poll \"this is a question\" \"option1,option2,option3\" timeout" + "(minutes) ``` " },
             { name: '```$server```', value: "Get some information about the server" },
+            { name: "\n MUSIC", value: '__________________________' },
+            { name: '```$play name of the song```', value: "Play song in audio channel" },
+            { name: '```$skip```', value: "skip to the next song" },
+            { name: '```$stop```', value: "stop playing song and leave channel" },
         ];
         let AdminWarning = [{ name: 'ADMINISTRATOR COMMAND', value: "Be an admin ;)" }];
         let Admin = [
