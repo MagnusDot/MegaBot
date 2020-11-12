@@ -1,5 +1,5 @@
-import {Command} from '../Class/command';
-import {displayWords} from '../Class/Functions';
+import {Command} from '../../Class/command';
+import {displayWords} from '../../Class/Functions';
 import low = require("lowdb");
 import FileSync = require("lowdb/adapters/FileSync");
 
