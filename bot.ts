@@ -23,11 +23,11 @@ Configdb.defaults({ server: [] })
 
 import { ping } from "./Commands/ping";
 import { Users } from "./Commands/Users";
-import { Forbid } from "./Commands/Forbid";
-import { Unforbid } from "./Commands/Unforbid";
-import { Listforbid } from "./Commands/Listforbid";
-import { CheckForbidded } from "./Commands/CheckForbidded";
-import { Mute } from "./Commands/Mute";
+import { Forbid } from "./Commands/ForbidenWord/Forbid";
+import { Unforbid } from "./Commands/ForbidenWord/Unforbid";
+import { Listforbid } from "./Commands/ForbidenWord/Listforbid";
+import { CheckForbidded } from "./Commands/ForbidenWord/CheckForbidded";
+import { Mute } from "./Commands/Mute/Mute";
 import { Help } from "./Commands/Help";
 import { AddRole } from "./Commands/React/AddRole";
 import { React } from "./Commands/React/React";
@@ -36,7 +36,7 @@ import { Poll } from "./Commands/Poll";
 import { Clear } from "./Commands/Clear";
 import { ListRole } from "./Commands/React/ListRole";
 import { DeleteRole } from "./Commands/React/DeleteRole";
-import { Unmute } from "./Commands/Unmute";
+import { Unmute } from "./Commands/Mute/Unmute";
 import { Xp } from "./Commands/Lvl/Xp";
 import { GetLevel } from "./Commands/Lvl/GetLevel";
 import { Server } from "./Commands/Server"
