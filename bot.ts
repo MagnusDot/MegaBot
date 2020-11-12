@@ -41,6 +41,10 @@ import { Xp } from "./Commands/Lvl/Xp";
 import { GetLevel } from "./Commands/Lvl/GetLevel";
 import { Server } from "./Commands/Server"
 import { Config } from "./Commands/Config";
+import { play } from "./Commands/Music/Play";
+import { skip } from "./Commands/Music/Skip";
+import { Stop } from "./Commands/Music/Stop";
+
 
 
 bot.on('ready', () => {
@@ -52,12 +56,13 @@ bot.on('ready', () => {
     }).catch(console.error);
 });
 
+const queue = new Map();
 
 bot.on('message', message => {
     if (message.channel.type !== 'dm') {
-        const commands = [ping, Users, Xp, Mute, Help, AddRole, Poll, Clear, ListRole, DeleteRole, Unmute, GetLevel, Server, Config, Forbid, Listforbid, Unforbid, CheckForbidded]
+        const commands = [ping, Users, Xp, Mute, Help, AddRole, Poll, Clear, ListRole, DeleteRole, Unmute, GetLevel, Server, Config, Forbid, Listforbid, Unforbid, CheckForbidded, play, skip, Stop]
         commands.forEach(Command => {
-            Command.parse(message, Discord, bot);
+            Command.parse(message, Discord, bot, queue);
         });
     }
 });

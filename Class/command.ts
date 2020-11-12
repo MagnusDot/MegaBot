@@ -1,10 +1,10 @@
 export class Command {
 
-    static parse(message, Discord, bot) {
+    static parse(message, Discord, bot, queue ) {
         if(message.author.bot) return;
 
         if (this.match(message)) {
-            this.action(message, Discord, bot);
+            this.action(message, Discord, bot, queue );
             return true
         }
         return false
@@ -14,7 +14,7 @@ export class Command {
         return false
     }
 
-    static action(message, Discord, bot) {
+    static action(message, Discord, bot, queue) {
 
     }
 

@@ -7,11 +7,6 @@ MegaBot was created to bring together all the possible features of bots existing
 
 Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&permissions=2147483639&scope=bot
 
-## NEW Features V0.1.7
-~~
-### Correction 
-- Fix Mute delay
-- Change the ```$help``` function
 
 # Features 
 
@@ -20,6 +15,9 @@ Install : https://discord.com/api/oauth2/authorize?client_id=746452184777883690&
   - Level : ```$lvl``` ( You can check your lvl if the server allow it )
   - Poll : ```$poll "this is a question" "option1,option2,option3" timeout(minutes)``` ( if you need to create poll with result )
   - Server : ```$server``` (Get some information about the server)
+  - $play : ```$play name of the song``` (Play song in audio channel)
+  - $skip : ```$skip``` (skip to the next song)
+  - $stop : ```$stop``` (stop playing song and leave channel)
 
   #### ADMINISTRATOR COMMAND
   - Mute user : ```$mute 1d @user``` ( mute user during one day )
