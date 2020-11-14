@@ -26,11 +26,11 @@ export class play extends Command {
         const permissions = voiceChannel.permissionsFor(message.client.user);
         if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
             const Embed = new Discord.MessageEmbed()
-            .setColor('#0099ff')
-            .setTitle('I need Persmission')
-            .setDescription(`I need the permissions to join and speak in your voice channel!`)
-            .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
-            .setTimestamp()
+                .setColor('#0099ff')
+                .setTitle('I need Persmission')
+                .setDescription(`I need the permissions to join and speak in your voice channel!`)
+                .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                .setTimestamp()
             return message.channel.send(Embed);
         }
 
@@ -71,9 +71,9 @@ export class play extends Command {
         } else {
             serverQueue.songs.push(song);
             const Embed = new Discord.MessageEmbed()
-            .setColor('#0099ff')
-            .setDescription(`Queued  [${song.title}](${song.url}) [<@${song.user.id}>]`)
-            .setTimestamp()
+                .setColor('#0099ff')
+                .setDescription(`Queued  [${song.title}](${song.url}) [<@${song.user.id}>]`)
+                .setTimestamp()
             return message.channel.send(Embed);
         }
 
@@ -83,13 +83,13 @@ export class play extends Command {
     static play(guild, song, queue, Discord) {
         const serverQueue = queue.get(guild.id);
         if (!song) {
-            
+
             const Embed = new Discord.MessageEmbed()
-            .setColor('#0099ff')
-            .setTitle('No song')
-            .setDescription(`I will be Disconnected`)
-            .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
-            .setTimestamp()
+                .setColor('#0099ff')
+                .setTitle('No song')
+                .setDescription(`I will be Disconnected`)
+                .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                .setTimestamp()
             serverQueue.textChannel.send(Embed).then((msg) => {
                 msg.delete({ timeout: 5000 });
                 serverQueue.voiceChannel.leave();
@@ -98,21 +98,40 @@ export class play extends Command {
             return;
         }
 
-        const dispatcher = serverQueue.connection
-            .play(ytdl(song.url))
-            .on("finish", () => {
-                serverQueue.songs.shift();
-                this.play(guild, serverQueue.songs[0], queue, Discord);
-            })
-            .on("error", error => console.error(error));
-        dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
+        if (serverQueue.voiceChannel.members.filter(member => !member.user.bot).size < 1) {
 
-        const Embed = new Discord.MessageEmbed()
-            .setColor('#0099ff')
-            .setTitle('Now playing')
-            .setDescription(`[${song.title}](${song.url}) [<@${song.user.id}>]`)
-            .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
-            .setTimestamp()
-        serverQueue.textChannel.send(Embed);
+            serverQueue.songs = [];
+            serverQueue.voiceChannel.leave();
+
+            const Embed = new Discord.MessageEmbed()
+                .setColor('#0099ff')
+                .setTitle('Nobody in the room')
+                .setDescription(`I will be Disconnected`)
+                .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                .setTimestamp()
+            queue.delete(guild.id);
+
+            serverQueue.textChannel.send(Embed).then(msg => {
+                msg.delete({ timeout: 5000 });
+            })
+        } else {
+
+            const dispatcher = serverQueue.connection
+                .play(ytdl(song.url))
+                .on("finish", () => {
+                    serverQueue.songs.shift();
+                    this.play(guild, serverQueue.songs[0], queue, Discord);
+                })
+                .on("error", error => console.error(error));
+            dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
+
+            const Embed = new Discord.MessageEmbed()
+                .setColor('#0099ff')
+                .setTitle('Now playing')
+                .setDescription(`[${song.title}](${song.url}) [<@${song.user.id}>]`)
+                .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                .setTimestamp()
+            serverQueue.textChannel.send(Embed);
+        }
     }
 }

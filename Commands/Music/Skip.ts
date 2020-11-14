@@ -25,7 +25,7 @@ export class skip extends Command {
         if (!serverQueue)
             return message.channel.send("There is no song that I could skip!");
 
-            message.react(':thumbsup:')
+            message.react('👍')
             serverQueue.connection.dispatcher.end();
     }
 }

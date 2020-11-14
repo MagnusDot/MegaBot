@@ -15,7 +15,7 @@ export class Stop extends Command {
             return message.channel.send(
                 "You need to be in a voice channel to play music!"
             );
-            message.react(':wave:')
+            message.react('👋')
             serverQueue.songs = [];
             serverQueue.connection.dispatcher.end();
     }
