@@ -135,7 +135,6 @@ export class play extends Command {
                         })
                         clearTimeout(serverQueue.loop);
                     }
-                    console.log("Timeout");
                 }, 30000)
             }
             const dispatcher = serverQueue.connection
