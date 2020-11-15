@@ -52,7 +52,8 @@ export class play extends Command {
                 connection: null,
                 songs: [],
                 volume: 5,
-                playing: true
+                playing: true,
+                loop: null
             };
 
             queue.set(message.guild.id, queueContruct);
@@ -115,7 +116,28 @@ export class play extends Command {
                 msg.delete({ timeout: 5000 });
             })
         } else {
+            if (serverQueue.loop === null) {
+                serverQueue.loop = setInterval(function () {
+                    if (serverQueue.voiceChannel.members.filter(member => !member.user.bot).size < 1) {
+                        serverQueue.songs = [];
+                        serverQueue.voiceChannel.leave();
 
+                        const Embed = new Discord.MessageEmbed()
+                            .setColor('#0099ff')
+                            .setTitle('Nobody in the room')
+                            .setDescription(`I will be Disconnected`)
+                            .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                            .setTimestamp()
+                        queue.delete(guild.id);
+
+                        serverQueue.textChannel.send(Embed).then(msg => {
+                            msg.delete({ timeout: 5000 });
+                        })
+                        clearTimeout(serverQueue.loop);
+                    }
+                    console.log("Timeout");
+                }, 30000)
+            }
             const dispatcher = serverQueue.connection
                 .play(ytdl(song.url))
                 .on("finish", () => {
