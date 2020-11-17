@@ -53,7 +53,8 @@ export class play extends Command {
                 songs: [],
                 volume: 5,
                 playing: true,
-                loop: null
+                loop: null,
+                dispatcher: null
             };
 
             queue.set(message.guild.id, queueContruct);
@@ -137,22 +138,38 @@ export class play extends Command {
                     }
                 }, 30000)
             }
-            const dispatcher = serverQueue.connection
-                .play(ytdl(song.url))
-                .on("finish", () => {
-                    serverQueue.songs.shift();
-                    this.play(guild, serverQueue.songs[0], queue, Discord);
-                })
-                .on("error", error => console.error(error));
-            dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
+            try {
+                const dispatcher = serverQueue.connection
+                    .play(ytdl(song.url))
+                    .on("finish", () => {
+                        serverQueue.songs.shift();
+                        this.play(guild, serverQueue.songs[0], queue, Discord);
+                    })
+                    .on("error", error => console.error(error));
+                dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
+                serverQueue.dispatcher = dispatcher;
+                
+                const Embed = new Discord.MessageEmbed()
+                    .setColor('#0099ff')
+                    .setTitle('Now playing')
+                    .setDescription(`[${song.title}](${song.url}) [<@${song.user.id}>]`)
+                    .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                    .setTimestamp()
+                serverQueue.textChannel.send(Embed);
+            } catch (e) {
 
-            const Embed = new Discord.MessageEmbed()
-                .setColor('#0099ff')
-                .setTitle('Now playing')
-                .setDescription(`[${song.title}](${song.url}) [<@${song.user.id}>]`)
-                .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
-                .setTimestamp()
-            serverQueue.textChannel.send(Embed);
+                const Embed = new Discord.MessageEmbed()
+                    .setColor('#0099ff')
+                    .setTitle('Error')
+                    .setDescription(`The requested song by [<@${song.user.id}>] is not working`)
+                    .setThumbnail('https://image.noelshack.com/fichiers/2020/34/7/1598188353-icons8-jason-voorhees-500.png')
+                    .setTimestamp()
+                serverQueue.textChannel.send(Embed);
+
+                serverQueue.songs.shift();
+                this.play(guild, serverQueue.songs[0], queue, Discord);
+            }
+
         }
     }
 }
