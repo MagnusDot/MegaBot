@@ -4,19 +4,19 @@
   "description": "Bot Discord",
   "main": "bot.js",
   "dependencies": {
-    "@types/node": "^14.6.0",
-    "discord.js": "^12.3.1",
+    "@types/node": "^14.14.10",
+    "discord.js": "^12.5.1",
     "ffmpeg": "0.0.4",
     "fs": "0.0.1-security",
     "https": "^1.0.0",
     "lowdb": "^1.0.0",
     "ms": "^2.1.2",
     "node-opus": "^0.3.3",
-    "pm2": "^4.4.1",
+    "pm2": "^4.5.0",
     "typescript": "^3.9.7",
     "youtube-audio-stream": "^0.2.0",
     "youtube-search": "^1.1.4",
-    "ytdl-core": "^4.0.3"
+    "ytdl-core": "^4.1.0"
   },
   "devDependencies": {
     "tsc-watch": "^4.2.9"
