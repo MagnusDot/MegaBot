@@ -33,8 +33,18 @@ export class play extends Command {
                 .setTimestamp()
             return message.channel.send(Embed);
         }
+        let songInfo = {
+            results: [
+                {
+                    link: args,
+                    title: "Song requested by users"
+                }
+            ]
+        }
 
-        const songInfo = await search(args, opts);
+        if (!this.validURL(args)) {
+            songInfo = await search(args, opts);
+        }
 
         const song = {
             title: songInfo.results[0].title,
@@ -148,7 +158,7 @@ export class play extends Command {
                     .on("error", error => console.error(error));
                 dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
                 serverQueue.dispatcher = dispatcher;
-                
+
                 const Embed = new Discord.MessageEmbed()
                     .setColor('#0099ff')
                     .setTitle('Now playing')
@@ -171,5 +181,15 @@ export class play extends Command {
             }
 
         }
+    }
+
+    static validURL(str) {
+        var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+            '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+            '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+            '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+        return !!pattern.test(str);
     }
 }
