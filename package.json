@@ -12,7 +12,7 @@
     "lowdb": "^1.0.0",
     "ms": "^2.1.2",
     "node-opus": "^0.3.3",
-    "pm2": "^4.5.0",
+    "pm2": "^5.2.0",
     "typescript": "^3.9.7",
     "youtube-audio-stream": "^0.2.0",
     "youtube-search": "^1.1.4",
